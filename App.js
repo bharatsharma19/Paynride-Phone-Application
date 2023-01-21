@@ -60,6 +60,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
     width: '84%',
     borderRadius: 16,
+    marginTop: '32%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
 
   title: {
