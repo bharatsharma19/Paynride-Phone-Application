@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     fontFamily: 'Poppins',
+    marginBottom: 12,
   },
 
   input: {
