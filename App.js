@@ -1,8 +1,17 @@
 import {React, useState} from 'react';
-import {SafeAreaView, StyleSheet, Text, TextInput, View} from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  Button,
+  Alert,
+} from 'react-native';
 
 const App = () => {
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   return (
     <View style={styles.container}>
@@ -18,6 +27,25 @@ const App = () => {
           />
         </SafeAreaView>
       </View>
+      <View>
+        <SafeAreaView>
+          <TextInput
+            keyboardType="default"
+            style={styles.input}
+            onChangeText={setPassword}
+            value={password}
+            placeholder="Enter your Password"
+            secureTextEntry
+          />
+        </SafeAreaView>
+      </View>
+      <View style={styles.loginBtnView}>
+        <Button
+          style={styles.loginBtn}
+          title="Login"
+          onPress={() => Alert.alert('Login Button Presses')}
+        />
+      </View>
     </View>
   );
 };
@@ -30,7 +58,7 @@ const styles = StyleSheet.create({
     marginTop: 24,
     height: 'auto',
     backgroundColor: '#f5f5f5',
-    width: '80%',
+    width: '84%',
     borderRadius: 16,
   },
 
@@ -49,6 +77,16 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
+  },
+
+  loginBtnView: {
+    width: '93%',
+    margin: 12,
+    padding: 10,
+  },
+
+  loginBtn: {
+    elevation: 4,
   },
 });
 
