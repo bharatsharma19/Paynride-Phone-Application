@@ -1,30 +1,54 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {React, useState} from 'react';
+import {SafeAreaView, StyleSheet, Text, TextInput, View} from 'react-native';
 
-const App = () => (
-  <View style={styles.container}>
-    <Text style={styles.title}>Bharat Sharma</Text>
-  </View>
-);
+const App = () => {
+  const [email, setEmail] = useState('');
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Login</Text>
+      <View>
+        <SafeAreaView>
+          <TextInput
+            keyboardType="email-address"
+            style={styles.input}
+            onChangeText={setEmail}
+            value={email}
+            placeholder="Enter your Email"
+          />
+        </SafeAreaView>
+      </View>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 24,
-    backgroundColor: '#eaeaea',
+    display: 'flex',
+    justifyContent: 'center',
+    alignContent: 'center',
+    marginTop: 24,
+    height: 'auto',
+    backgroundColor: '#f5f5f5',
+    width: '80%',
+    borderRadius: 16,
   },
 
   title: {
     marginTop: 16,
     paddingVertical: 8,
-    borderWidth: 4,
-    borderColor: '#20232a',
-    borderRadius: 6,
-    backgroundColor: '#61dafb',
     color: '#20232a',
     textAlign: 'center',
     fontSize: 30,
     fontWeight: 'bold',
+    fontFamily: 'Poppins',
+  },
+
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   },
 });
 
