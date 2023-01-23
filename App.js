@@ -1,5 +1,5 @@
 import {React} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {View} from 'react-native';
 import Login from './Components/Screens/Login';
 
 const App = () => {
@@ -9,9 +9,5 @@ const App = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {},
-});
 
 export default App;
