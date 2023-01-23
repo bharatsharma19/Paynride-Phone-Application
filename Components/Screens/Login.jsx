@@ -6,9 +6,11 @@ import {
     TextInput,
     View,
     Button,
-    Alert,
+    Dimensions,
 } from 'react-native';
 import { postData } from '../../Services/FetchNodeServices';
+
+const { width, height } = Dimensions.get('window')
 
 const Login = () => {
     const [mobile, setMobile] = useState('');
@@ -16,7 +18,7 @@ const Login = () => {
     const handleLoginClick = async () => {
         var result = await postData("user/checkuser", { mobileno: mobile })
 
-        Alert.alert(result.status)
+        alert(result.status)
     }
 
     return (
@@ -25,7 +27,6 @@ const Login = () => {
             <View>
                 <SafeAreaView>
                     <TextInput
-                        keyboardType="email-address"
                         style={styles.input}
                         onChangeText={setMobile}
                         value={mobile}
@@ -50,9 +51,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignContent: 'center',
         marginTop: 24,
-        height: 'auto',
+        height: height * 0.32,
         backgroundColor: '#f5f5f5',
-        width: '84%',
+        width: width * 0.84,
         borderRadius: 16,
         marginTop: '32%',
         marginLeft: 'auto',
