@@ -1,14 +1,13 @@
 import { React, useState } from 'react';
 import {
-    SafeAreaView,
     StyleSheet,
-    Text,
-    TextInput,
     View,
     Button,
     Dimensions,
+    Text,
 } from 'react-native';
 import { postData } from '../../Services/FetchNodeServices';
+import Input from '../UiComponents/Input';
 
 const { width, height } = Dimensions.get('window')
 
@@ -23,16 +22,8 @@ const Login = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Login</Text>
             <View>
-                <SafeAreaView>
-                    <TextInput
-                        style={styles.input}
-                        onChangeText={setMobile}
-                        value={mobile}
-                        placeholder="Enter your Mobile Number"
-                    />
-                </SafeAreaView>
+                <Input labelTxt="Enter your Mobile Number" placeholder="Mobile Number" setValue={setMobile} />
             </View>
             <View style={styles.loginBtnView}>
                 <Button
@@ -52,7 +43,7 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         marginTop: 24,
         height: height * 0.32,
-        backgroundColor: '#f5f5f5',
+        /*backgroundColor: '#fff',*/
         width: width * 0.84,
         borderRadius: 16,
         marginTop: '32%',
@@ -68,14 +59,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: 'bold',
         fontFamily: 'Poppins',
-        marginBottom: 12,
-    },
-
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
+        marginBottom: 24,
     },
 
     loginBtnView: {
