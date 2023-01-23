@@ -4,7 +4,6 @@ import {
     View,
     Button,
     Dimensions,
-    Text,
 } from 'react-native';
 import { postData } from '../../Services/FetchNodeServices';
 import Input from '../UiComponents/Input';
