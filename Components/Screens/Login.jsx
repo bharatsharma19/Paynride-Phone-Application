@@ -7,29 +7,47 @@ import {
 } from 'react-native';
 import { postData } from '../../Services/FetchNodeServices';
 import Input from '../UiComponents/Input';
+import AppButton from '../UiComponents/Button';
 
 const { width, height } = Dimensions.get('window')
 
 const Login = () => {
-    const [mobile, setMobile] = useState('');
+    const [inputs, setInputs] = useState({ mobileEmail: '',/* password: ''*/ })
+    const [error, setError] = useState({})
+    const validate = () => {
+        var isValid = true
+        if (!inputs.mobileEmail) {
+            handleErrors("Pls Enter your Emailid/Mobile", "mobileEmail")
+            isValid = false
+        }
+        /*
+        if (!inputs.password) {
+            handleErrors("Pls input password..", "password")
+            isValid = false
+        }
+        */
+        return isValid
+    }
 
     const handleLoginClick = async () => {
-        var result = await postData("user/checkuser", { mobileno: mobile })
+        if (validate()) {
+            var result = await postData('user/checkuser', { mobileno: inputs.mobileEmail })
+            alert(result.status)
+        }
+    }
+    const handleValues = (txt, attr) => {
+        setInputs(prevStates => ({ ...prevStates, [attr]: txt }))
+    }
 
-        alert(result.status)
+    const handleErrors = (txt, attr) => {
+        setError(prevStates => ({ ...prevStates, [attr]: txt }))
     }
 
     return (
         <View style={styles.container}>
-            <View>
-                <Input labelTxt="Enter your Mobile Number" placeholder="Mobile Number" setValue={setMobile} />
-            </View>
-            <View style={styles.loginBtnView}>
-                <Button
-                    style={styles.loginBtn}
-                    title="Login"
-                    onPress={handleLoginClick}
-                />
+            <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
+                <Input labelTxt="Enter your Mobile Number" iconName="phone" placeholder="Mobile Number" error={error.mobileEmail} onFocus={() => handleErrors(null, "mobileEmail")} onChangeText={(txt) => handleValues(txt, 'mobileEmail')} />
+                <AppButton onPress={handleLoginClick} btnWidth={0.75} buttonText={'Sign In'} bgColor='#e67e22' />
             </View>
         </View>
     );
@@ -48,27 +66,6 @@ const styles = StyleSheet.create({
         marginTop: '32%',
         marginLeft: 'auto',
         marginRight: 'auto',
-    },
-
-    title: {
-        marginTop: 16,
-        paddingVertical: 8,
-        color: '#20232a',
-        textAlign: 'center',
-        fontSize: 30,
-        fontWeight: 'bold',
-        fontFamily: 'Poppins',
-        marginBottom: 24,
-    },
-
-    loginBtnView: {
-        width: '93%',
-        margin: 12,
-        padding: 10,
-    },
-
-    loginBtn: {
-        elevation: 4,
     },
 });
 
