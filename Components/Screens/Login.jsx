@@ -2,7 +2,6 @@ import { React, useState } from 'react';
 import {
     StyleSheet,
     View,
-    Button,
     Dimensions,
 } from 'react-native';
 import { postData } from '../../Services/FetchNodeServices';
@@ -60,7 +59,6 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         marginTop: 24,
         height: height * 0.32,
-        /*backgroundColor: '#fff',*/
         width: width * 0.84,
         borderRadius: 16,
         marginTop: '32%',
