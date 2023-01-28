@@ -3,7 +3,6 @@ import {
     StyleSheet,
     View,
     Dimensions,
-    Alert,
 } from 'react-native';
 import { postData } from '../../Services/FetchNodeServices';
 import Input from '../UiComponents/Input';
