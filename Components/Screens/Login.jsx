@@ -3,6 +3,7 @@ import {
     StyleSheet,
     View,
     Dimensions,
+    Alert,
 } from 'react-native';
 import { postData } from '../../Services/FetchNodeServices';
 import Input from '../UiComponents/Input';
@@ -16,7 +17,7 @@ const Login = () => {
     const validate = () => {
         var isValid = true
         if (!inputs.mobileEmail) {
-            handleErrors("Pls Enter your Emailid/Mobile", "mobileEmail")
+            handleErrors("Pls Enter your Mobile Number", "mobileEmail")
             isValid = false
         }
         /*
@@ -31,7 +32,12 @@ const Login = () => {
     const handleLoginClick = async () => {
         if (validate()) {
             var result = await postData('user/checkuser', { mobileno: inputs.mobileEmail })
-            alert(result.status)
+
+            if (result.status) { alert(result.status) }
+            else { alert(false) }
+        }
+        else {
+            alert("Please Enter your Mobile Number to Continue...")
         }
     }
     const handleValues = (txt, attr) => {
@@ -45,7 +51,7 @@ const Login = () => {
     return (
         <View style={styles.container}>
             <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
-                <Input labelTxt="Enter your Mobile Number" iconName="phone" placeholder="Mobile Number" error={error.mobileEmail} onFocus={() => handleErrors(null, "mobileEmail")} onChangeText={(txt) => handleValues(txt, 'mobileEmail')} />
+                <Input labelTxt="Enter your Mobile Number" iconName="phone" placeholder="Mobile Number" keyboardType="numeric" error={error.mobileEmail} onFocus={() => handleErrors(null, "mobileEmail")} onChangeText={(txt) => handleValues(txt, 'mobileEmail')} />
                 <AppButton onPress={handleLoginClick} btnWidth={0.75} buttonText={'Sign In'} bgColor='#e67e22' />
             </View>
         </View>
