@@ -50,7 +50,7 @@ const Login = () => {
     return (
         <View style={styles.container}>
             <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
-                <Input labelTxt="Enter your Mobile Number" iconName="phone" placeholder="Mobile Number" keyboardType="numeric" error={error.mobileEmail} onFocus={() => handleErrors(null, "mobileEmail")} onChangeText={(txt) => handleValues(txt, 'mobileEmail')} />
+                <Input labelTxt="Login" iconName="phone" placeholder="Mobile Number" keyboardType="numeric" error={error.mobileEmail} onFocus={() => handleErrors(null, "mobileEmail")} onChangeText={(txt) => handleValues(txt, 'mobileEmail')} />
                 <AppButton onPress={handleLoginClick} btnWidth={0.75} buttonText={'Sign In'} bgColor='#e67e22' />
             </View>
         </View>
