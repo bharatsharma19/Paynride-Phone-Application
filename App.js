@@ -14,7 +14,7 @@ const App = () => {
       style={{backgroundColor: '#fff', width: width * 1, height: height * 1}}>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Login"
+          initialRouteName="Home"
           screenOptions={{headerShown: false}}>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Home" component={Home} />

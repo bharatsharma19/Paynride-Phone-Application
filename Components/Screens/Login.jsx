@@ -36,7 +36,7 @@ const Login = ({ navigation }) => {
                 navigation.navigate("Home")
             }
             else {
-                alert("You are not registered User, Please Register to Continue...")
+                alert("Please Sign Up to Continue...")
             }
         }
         else {
