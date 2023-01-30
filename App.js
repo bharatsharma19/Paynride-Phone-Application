@@ -1,14 +1,21 @@
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {React} from 'react';
 import {View, Dimensions} from 'react-native';
 import Login from './Components/Screens/Login';
 
 const {width, height} = Dimensions.get('window');
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <View
       style={{backgroundColor: '#fff', width: width * 1, height: height * 1}}>
-      <Login />
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Login">
+          <Stack.Screen name="Login" component={Login} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </View>
   );
 };
