@@ -10,7 +10,7 @@ import AppButton from '../UiComponents/Button';
 
 const { width, height } = Dimensions.get('window')
 
-const Login = () => {
+const Login = ({ navigation }) => {
     const [inputs, setInputs] = useState({ mobileEmail: '',/* password: ''*/ })
     const [error, setError] = useState({})
     const validate = () => {
@@ -32,8 +32,12 @@ const Login = () => {
         if (validate()) {
             var result = await postData('user/checkuser', { mobileno: inputs.mobileEmail })
 
-            if (result.status) { alert(result.status) }
-            else { alert(false) }
+            if (result.status) {
+                navigation.navigate("Home")
+            }
+            else {
+                alert("You are not registered User, Please Register to Continue...")
+            }
         }
         else {
             alert("Please Enter your Mobile Number to Continue...")
