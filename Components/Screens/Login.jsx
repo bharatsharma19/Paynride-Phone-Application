@@ -5,8 +5,8 @@ import {
     Dimensions,
 } from 'react-native';
 import { postData } from '../../Services/FetchNodeServices';
-import Input from '../UiComponents/Input';
-import AppButton from '../UiComponents/Button';
+import Input from '../UiComponents/Common/Input';
+import AppButton from '../UiComponents/Common/Button';
 
 const { width, height } = Dimensions.get('window')
 
