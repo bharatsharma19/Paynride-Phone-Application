@@ -3,18 +3,16 @@ import {
     StyleSheet,
     View,
     Dimensions,
-    Text
 } from 'react-native';
+import Search from '../UiComponents/Home/Search';
 
 const { width, height } = Dimensions.get('window')
 
 const Home = () => {
     return (
         <View style={styles.container}>
-            <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
-                <Text>
-                    Home Page
-                </Text>
+            <View>
+                <Search />
             </View>
         </View>
     );
@@ -22,16 +20,8 @@ const Home = () => {
 
 const styles = StyleSheet.create({
     container: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignContent: 'center',
-        marginTop: 24,
-        height: height * 0.32,
-        width: width * 0.84,
-        borderRadius: 16,
-        marginTop: '32%',
-        marginLeft: 'auto',
-        marginRight: 'auto',
+        height: height * 1,
+        width: width * 1,
     },
 });
 
