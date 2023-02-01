@@ -45,9 +45,12 @@ export default function Search() {
                         />
                         <Icon name="arrow-right" style={{ fontSize: 36, color: "#000", marginLeft: 142, }} />
                     </View>
-                    <View style={{ marginTop: 18, }}>
-                        <Text style={{ fontSize: 20, fontWeight: 500, color: "#fff", letterSpacing: 1.2, marginTop: 4, }}>
-                            Want to book in different City?
+                    <View style={{ marginTop: 18, flexDirection: 'row', alignItems: 'center', }}>
+                        <Text style={{ fontSize: 20, fontWeight: 500, color: "#f5f5f5", letterSpacing: 1.2, marginTop: 4, opacity: 0.9 }}>
+                            Want to book in
+                        </Text>
+                        <Text style={{ textDecorationLine: 'underline', color: '#fff', marginLeft: 8, opacity: 1, fontSize: 22, fontWeight: 500, marginTop: 2, }}>
+                            different City?
                         </Text>
                     </View>
                 </View>
