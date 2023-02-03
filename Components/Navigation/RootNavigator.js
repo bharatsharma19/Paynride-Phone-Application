@@ -18,7 +18,7 @@ export default function RootNavigator() {
     return (
       <Drawer.Navigator
         drawerContent={props => <CustomDrawerContent {...props} />}>
-        <Drawer.Screen name="Home" component={Home} />
+        <Drawer.Screen name="HomePage" component={Home} />
       </Drawer.Navigator>
     );
   };
@@ -26,17 +26,19 @@ export default function RootNavigator() {
   const CustomDrawerContent = props => {
     return (
       <DrawerContentScrollView {...props}>
-        <DrawerItemList {...props}>
-          <DrawerItem
-            label="My Profile"
-            icon={<Icon name="account-details-outline" size={20} />}
-          />
-          <DrawerItem
-            label="Settings"
-            icon={<Icon name="account-settings" size={20} />}
-          />
-          <DrawerItem label="Logout" icon={<Icon name="Logout" size={20} />} />
-        </DrawerItemList>
+        <DrawerItemList {...props} />
+        <DrawerItem
+          label="My Profile"
+          icon={() => <Icon name="account-details-outline" size={20} />}
+        />
+        <DrawerItem
+          label="Settings"
+          icon={() => <Icon name="account-settings" size={20} />}
+        />
+        <DrawerItem
+          label="Logout"
+          icon={() => <Icon name="logout" size={20} />}
+        />
       </DrawerContentScrollView>
     );
   };
