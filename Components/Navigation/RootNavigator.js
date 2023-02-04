@@ -49,8 +49,10 @@ export default function RootNavigator() {
             }}
             source={require('../Assets/transparent_logo.png')}
           />
-          <Text>+910000000000</Text>
-          <Text style={{fontSize: 12}}>paynride1909@gmail.com</Text>
+          <Text style={{fontWeight: 500}}>+910000000000</Text>
+          <Text style={{fontSize: 12, fontWeight: 500}}>
+            paynride1909@gmail.com
+          </Text>
         </View>
         <DrawerItemList {...props} />
         <DrawerItem

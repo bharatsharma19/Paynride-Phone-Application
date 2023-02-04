@@ -1,8 +1,10 @@
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {React} from 'react';
 import {View, Dimensions} from 'react-native';
 import RootNavigator from './Components/Navigation/RootNavigator';
+
+import {LogBox } from 'react-native';
+LogBox.ignoreLogs(['Reanimated 2']);
 
 const {width, height} = Dimensions.get('window');
 
