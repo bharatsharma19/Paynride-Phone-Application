@@ -7,6 +7,7 @@ import {
 import { postData } from '../../Services/FetchNodeServices';
 import Input from '../UiComponents/Common/Input';
 import AppButton from '../UiComponents/Common/Button';
+import { storeData } from '../../Storage/AsyncStorage';
 
 const { width, height } = Dimensions.get('window')
 
@@ -33,6 +34,7 @@ const Login = ({ navigation }) => {
             var result = await postData('user/checkuser', { mobileno: inputs.mobileEmail })
 
             if (result.status) {
+                storeData('UserData', result.data)
                 navigation.navigate("Home")
             }
             else {
