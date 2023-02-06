@@ -134,7 +134,11 @@ const RootNavigator = () => {
       ) : (
         <>
           <View style={[styles.container, styles.horizontal]}>
-            <ActivityIndicator size="large" color="#8e44ad" />
+            <ActivityIndicator
+              size="large"
+              style={{transform: [{scaleX: 2}, {scaleY: 2}]}}
+              color="#8e44ad"
+            />
           </View>
         </>
       )}
