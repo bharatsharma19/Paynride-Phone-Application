@@ -8,7 +8,7 @@ import Search from '../UiComponents/Home/Search';
 
 const { width, height } = Dimensions.get('window')
 
-const Home = () => {
+const HomePage = () => {
     return (
         <View style={styles.container}>
             <View>
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Home;
+export default HomePage;

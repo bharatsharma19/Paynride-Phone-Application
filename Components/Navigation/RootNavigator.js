@@ -1,6 +1,6 @@
 import {React, useState, useEffect} from 'react';
 import Login from '../Screens/Login';
-import Home from '../Screens/Home';
+import HomePage from '../Screens/Home';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -13,11 +13,13 @@ import {
 import {Text, Image, View, ActivityIndicator, StyleSheet} from 'react-native';
 import AppHeader from '../UiComponents/Common/AppHeader';
 import {getStoreData} from '../../Storage/AsyncStorage';
+import UserProfile from '../Screens/UserProfile';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const RootNavigator = () => {
+
   const [initialScreen, setInitialScreen] = useState(null);
   const [userMobile, setUserMobile] = useState('');
   const [userEmail, setUserEmail] = useState('');
@@ -44,8 +46,8 @@ const RootNavigator = () => {
       <Drawer.Navigator
         drawerContent={props => <CustomDrawerContent {...props} />}>
         <Drawer.Screen
-          name="HomePage"
-          component={Home}
+          name="PaynRide"
+          component={HomePage}
           options={{
             headerShown: false,
             drawerIcon: () => <Icon name={'home'} size={24} color={'#000'} />,
@@ -98,12 +100,6 @@ const RootNavigator = () => {
           </Text>
         </View>
         <DrawerItemList {...props} />
-        <DrawerItem
-          label="My Profile"
-          icon={() => (
-            <Icon name="account-details-outline" size={20} color={'#000'} />
-          )}
-        />
         <DrawerItem
           label="Settings"
           icon={() => <Icon name="account-settings" size={20} color={'#000'} />}
