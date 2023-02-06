@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     headingTextStyle: {
         fontSize: 20,
         fontWeight: 700,
-        marginTop: 4,
+        marginTop: 8,
         color: "#000",
     },
 

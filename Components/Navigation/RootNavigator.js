@@ -110,8 +110,8 @@ const RootNavigator = () => {
         </View>
         <DrawerItemList {...props} />
         <DrawerItem
-          label="Settings"
-          icon={() => <Icon name="account-settings" size={20} color={'#000'} />}
+          label="My Bookings"
+          icon={() => <Icon name="car-multiple" size={20} color={'#000'} />}
         />
         <DrawerItem
           label="Logout"
