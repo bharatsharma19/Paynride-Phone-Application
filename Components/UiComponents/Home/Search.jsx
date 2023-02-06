@@ -1,12 +1,16 @@
 import { React, useState } from 'react'
 import { View, Text, Dimensions, StyleSheet, Image, TextInput } from 'react-native'
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
+import DateTimePicker from '@react-native-community/datetimepicker';
+import { event } from 'react-native-reanimated';
 
 const { width, height } = Dimensions.get('window')
 
 export default function Search() {
 
     const [selectedCity, setSelectedCity] = useState('Gwalior')
+    const [startDate, setStartDate] = useState('')
+    const [endDate, setEndDate] = useState('')
 
     return (
         <View style={{
@@ -44,6 +48,11 @@ export default function Search() {
                             value={selectedCity} multiline={true}
                         />
                         <Icon name="arrow-right" style={{ fontSize: 36, color: "#000", marginLeft: 142, }} />
+                    </View>
+                    <View style={{
+                        width: width * 0.92, backgroundColor: '#fff', borderRadius: 32, borderWidth: 0.5, borderColor: '#3498db', padding: 8, marginTop: 18, display: 'flex', flexDirection: 'row', alignItems: 'center',
+                    }}>
+                        
                     </View>
                     <View style={{ marginTop: 18, flexDirection: 'row', alignItems: 'center', }}>
                         <Text style={{ fontSize: 20, fontWeight: 500, color: "#f5f5f5", letterSpacing: 1.2, marginTop: 4, opacity: 0.9 }}>

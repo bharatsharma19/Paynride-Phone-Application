@@ -15,11 +15,11 @@ export default function AppHeader() {
 
     return (
         <View>
-            <View style={{ alignItems: 'center', backgroundColor: '#fff', display: 'flex', width: width, height: height * 0.08, justifyContent: 'space-between', flexDirection: 'row', padding: 5 }}>
-                <MCI name="menu" size={24} onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
+            <View style={{ alignItems: 'center', backgroundColor: '#fff', display: 'flex', width: width, height: height * 0.08, justifyContent: 'space-between', flexDirection: 'row', padding: 5, backgroundColor: "#ecf0f1", }}>
+                <MCI name="menu" size={24} onPress={() => navigation.dispatch(DrawerActions.openDrawer())} style={{ color: "#000", marginLeft: 8, }} />
                 <Image style={{ resizeMode: 'contain', width: 72, height: 120 }}
                     source={require('../../Assets/classic.png')} />
-                <MCI name="account" size={24} />
+                <MCI name="account" size={24} style={{ color: "#000", marginRight: 8, }} />
             </View>
         </View>
     )

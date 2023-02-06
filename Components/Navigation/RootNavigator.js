@@ -48,7 +48,7 @@ const RootNavigator = () => {
           component={Home}
           options={{
             headerShown: false,
-            drawerIcon: () => <Icon name={'home'} size={24} />,
+            drawerIcon: () => <Icon name={'home'} size={24} color={'#000'} />,
           }}
         />
       </Drawer.Navigator>
@@ -67,10 +67,10 @@ const RootNavigator = () => {
           }}>
           {<Text> {userFullName} </Text> ? (
             <View style={{marginBottom: 8}}>
-              <Text style={{fontSize: 18}}>
+              <Text style={{fontSize: 18, color: '#000'}}>
                 {' '}
                 Hello,{' '}
-                <Text style={{fontWeight: 500, fontSize: 18}}>
+                <Text style={{fontWeight: 500, fontSize: 18, color: '#000'}}>
                   {' '}
                   {userFullName}{' '}
                 </Text>
@@ -90,25 +90,27 @@ const RootNavigator = () => {
               />
             </>
           )}
-          <Text style={{fontWeight: 500}}>
+          <Text style={{fontWeight: 500, color: '#000'}}>
             {userMobile ? userMobile : '+917000192752'}
           </Text>
-          <Text style={{fontSize: 12, fontWeight: 500}}>
+          <Text style={{fontSize: 12, fontWeight: 500, color: '#000'}}>
             {userEmail ? userEmail : 'paynride1909@gmail.com'}
           </Text>
         </View>
         <DrawerItemList {...props} />
         <DrawerItem
           label="My Profile"
-          icon={() => <Icon name="account-details-outline" size={20} />}
+          icon={() => (
+            <Icon name="account-details-outline" size={20} color={'#000'} />
+          )}
         />
         <DrawerItem
           label="Settings"
-          icon={() => <Icon name="account-settings" size={20} />}
+          icon={() => <Icon name="account-settings" size={20} color={'#000'} />}
         />
         <DrawerItem
           label="Logout"
-          icon={() => <Icon name="logout" size={20} />}
+          icon={() => <Icon name="logout" size={20} color={'#000'} />}
         />
       </DrawerContentScrollView>
     );
