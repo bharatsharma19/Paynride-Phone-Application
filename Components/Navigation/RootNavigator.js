@@ -10,14 +10,14 @@ import {
   DrawerItemList,
   DrawerItem,
 } from '@react-navigation/drawer';
-import {Text, Image, View} from 'react-native';
+import {Text, Image, View, ActivityIndicator, StyleSheet} from 'react-native';
 import AppHeader from '../UiComponents/Common/AppHeader';
 import {getStoreData} from '../../Storage/AsyncStorage';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
-export default function RootNavigator() {
+const RootNavigator = () => {
   const [initialScreen, setInitialScreen] = useState(null);
   const [userMobile, setUserMobile] = useState('');
   const [userEmail, setUserEmail] = useState('');
@@ -132,8 +132,26 @@ export default function RootNavigator() {
           />
         </Stack.Navigator>
       ) : (
-        <Text>Please Wait...</Text>
+        <>
+          <View style={[styles.container, styles.horizontal]}>
+            <ActivityIndicator size="large" color="#8e44ad" />
+          </View>
+        </>
       )}
     </NavigationContainer>
   );
-}
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  horizontal: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 10,
+  },
+});
+
+export default RootNavigator;
