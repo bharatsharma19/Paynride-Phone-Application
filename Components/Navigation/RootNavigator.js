@@ -19,6 +19,9 @@ const Drawer = createDrawerNavigator();
 
 export default function RootNavigator() {
   const [initialScreen, setInitialScreen] = useState(null);
+  const [userMobile, setUserMobile] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+  const [userFullName, setUserFullName] = useState('');
 
   const checkAuth = async () => {
     var user = await getStoreData('UserData');
@@ -27,22 +30,14 @@ export default function RootNavigator() {
       setInitialScreen('Login');
     } else {
       setInitialScreen('Home');
-      fetchUserDetails(user);
+      setUserMobile(user[0].mobileno);
+      setUserEmail(user[0].emailid);
+      setUserFullName(user[0].fullname);
     }
   };
   useEffect(() => {
     checkAuth();
   }, []);
-
-  const [userMobile, setUserMobile] = useState('');
-  const [userEmail, setUserEmail] = useState('');
-  const [userFullName, setUserFullName] = useState('');
-
-  const fetchUserDetails = user => {
-    setUserMobile(user[0].mobileno);
-    setUserEmail(user[0].emailid);
-    setUserFullName(user[0].fullname);
-  };
 
   const ProjectDrawer = () => {
     return (
