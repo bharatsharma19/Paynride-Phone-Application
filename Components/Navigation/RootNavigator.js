@@ -19,7 +19,6 @@ const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const RootNavigator = () => {
-
   const [initialScreen, setInitialScreen] = useState(null);
   const [userMobile, setUserMobile] = useState('');
   const [userEmail, setUserEmail] = useState('');
@@ -51,6 +50,16 @@ const RootNavigator = () => {
           options={{
             headerShown: false,
             drawerIcon: () => <Icon name={'home'} size={24} color={'#000'} />,
+          }}
+        />
+        <Drawer.Screen
+          name="My Profile"
+          component={UserProfile}
+          options={{
+            headerShown: false,
+            drawerIcon: () => (
+              <Icon name={'account-details-outline'} size={24} color={'#000'} />
+            ),
           }}
         />
       </Drawer.Navigator>
@@ -123,6 +132,13 @@ const RootNavigator = () => {
           />
           <Stack.Screen
             name="Home"
+            component={ProjectDrawer}
+            options={{
+              header: AppHeader,
+            }}
+          />
+          <Stack.Screen
+            name="Profile"
             component={ProjectDrawer}
             options={{
               header: AppHeader,
