@@ -1,8 +1,6 @@
 import { React, useState } from 'react'
 import { View, Text, Dimensions, StyleSheet, Image, TextInput } from 'react-native'
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
-import DateTimePicker from '@react-native-community/datetimepicker';
-import { event } from 'react-native-reanimated';
 
 const { width, height } = Dimensions.get('window')
 
@@ -49,11 +47,6 @@ export default function Search() {
                         />
                         <Icon name="arrow-right" style={{ fontSize: 36, color: "#000", marginLeft: 142, }} />
                     </View>
-                    <View style={{
-                        width: width * 0.92, backgroundColor: '#fff', borderRadius: 32, borderWidth: 0.5, borderColor: '#3498db', padding: 8, marginTop: 18, display: 'flex', flexDirection: 'row', alignItems: 'center',
-                    }}>
-                        
-                    </View>
                     <View style={{ marginTop: 18, flexDirection: 'row', alignItems: 'center', }}>
                         <Text style={{ fontSize: 20, fontWeight: 500, color: "#f5f5f5", letterSpacing: 1.2, marginTop: 4, opacity: 0.9 }}>
                             Want to book in
@@ -70,7 +63,7 @@ export default function Search() {
 
 const styles = StyleSheet.create({
     mainContainer: {
-        height: height * 0.54,
+        height: height * 0.44,
         width: width * 1,
         justifyContent: 'center',
         alignItems: 'center',
