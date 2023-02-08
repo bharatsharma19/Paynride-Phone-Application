@@ -4,6 +4,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AppButton from '../Common/Button';
+import moment from 'moment';
 
 const { width, height } = Dimensions.get('window')
 
@@ -12,6 +13,8 @@ export default function Search() {
     const [selectedCity, setSelectedCity] = useState('Select City')
     const [startDate, setStartDate] = useState('Start Date')
     const [endDate, setEndDate] = useState('End Date')
+
+    var minDate = new Date()
 
     const [isStartDatePickerVisible, setStartDatePickerVisibility] = useState(false);
     const [isEndDatePickerVisible, setEndDatePickerVisibility] = useState(false);
@@ -29,14 +32,12 @@ export default function Search() {
         setEndDatePickerVisibility(false);
     };
 
-    const handleStartDateConfirm = (datetime) => {
-        console.warn("Start date has been picked: ", datetime);
-        setStartDate(datetime)
+    const handleStartDateConfirm = (date) => {
+        setStartDate(moment(date).format('DD-MM-YYYY hh:mm A'));
         hideStartDatePicker();
     };
     const handleEndDateConfirm = (date) => {
-        console.warn("End date has been picked: ", date);
-        setEndDate(date)
+        setEndDate(moment(date).format('DD-MM-YYYY hh:mm A'))
         hideEndDatePicker();
     };
 
@@ -77,7 +78,7 @@ export default function Search() {
                                 <Icon name="location-enter" style={{ fontSize: 36, color: "#000", }} />
                                 <Text
                                     style={{
-                                        backgroundColor: "#fff", fontSize: 30, marginLeft: 12, color: "#000", marginTop: -1,
+                                        backgroundColor: "#fff", fontSize: 30, marginLeft: 12, fontWeight: 'bold', color: "#000", marginTop: -1,
                                     }}
                                 >{selectedCity}</Text>
                                 <Icon name="arrow-right" style={{ fontSize: 36, color: "#000", marginLeft: 116, }} />
@@ -90,14 +91,15 @@ export default function Search() {
                                 }}>
                                     <Text
                                         style={{
-                                            backgroundColor: "#fff", fontSize: 12, marginLeft: 6, color: "#000",
+                                            backgroundColor: "#fff", fontSize: 16, fontWeight: 'bold', marginLeft: 6, color: "#000",
                                         }}
-                                    >{startDate.datetime}</Text>
+                                    >{startDate}</Text>
                                     <DateTimePickerModal
                                         isVisible={isStartDatePickerVisible}
                                         mode="datetime"
                                         onConfirm={handleStartDateConfirm}
                                         onCancel={hideStartDatePicker}
+                                        minimumDate={minDate}
                                     />
                                 </View>
                             </TouchableOpacity>
@@ -107,14 +109,15 @@ export default function Search() {
                                 }}>
                                     <Text
                                         style={{
-                                            backgroundColor: "#fff", fontSize: 12, marginLeft: 6, color: "#000",
+                                            backgroundColor: "#fff", fontSize: 16, fontWeight: 'bold', marginLeft: 6, color: "#000",
                                         }}
-                                    >{endDate.datetime}</Text>
+                                    >{endDate}</Text>
                                     <DateTimePickerModal
                                         isVisible={isEndDatePickerVisible}
                                         mode="datetime"
                                         onConfirm={handleEndDateConfirm}
                                         onCancel={hideEndDatePicker}
+                                        minimumDate={minDate}
                                     />
                                 </View>
                             </TouchableOpacity>
