@@ -120,7 +120,7 @@ export default function Search() {
                             </TouchableOpacity>
                         </View>
                     </View>
-                    <View style={{ marginTop: 8, marginBottom: -8, flexDirection: 'row', alignItems: 'center', }}>
+                    <View style={{ marginTop: 12, }}>
                         <AppButton onPress={handleCitySearch} btnWidth={0.84} buttonText={'Search'} bgColor='#2980b9' borderRadius={24} />
                     </View>
                 </View>
@@ -131,7 +131,7 @@ export default function Search() {
 
 const styles = StyleSheet.create({
     mainContainer: {
-        height: height * 0.62,
+        height: height * 0.60,
         width: width * 1,
         justifyContent: 'center',
         alignItems: 'center',
