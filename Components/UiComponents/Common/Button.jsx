@@ -1,13 +1,13 @@
 import { Dimensions, TouchableOpacity, View, Text } from "react-native"
 const { width } = Dimensions.get('window')
 
-export default function AppButton({ buttonText, btnWidth, bgColor, ...props }) {
+export default function AppButton({ buttonText, borderRadius, btnWidth, bgColor, ...props }) {
     return (
         <TouchableOpacity {...props}>
             <View style={{
                 width: width * (btnWidth ? btnWidth : 1),
                 backgroundColor: bgColor ? bgColor : '#3498db',
-                borderRadius: 10,
+                borderRadius: borderRadius ? borderRadius : 10,
                 borderWidth: 0.5,
                 borderColor: bgColor,
                 padding: 10,

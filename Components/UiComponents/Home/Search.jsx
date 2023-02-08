@@ -1,14 +1,48 @@
 import { React, useState } from 'react'
-import { View, Text, Dimensions, StyleSheet, Image, TextInput } from 'react-native'
+import { View, Text, Dimensions, StyleSheet, Image } from 'react-native'
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import AppButton from '../Common/Button';
 
 const { width, height } = Dimensions.get('window')
 
 export default function Search() {
 
-    const [selectedCity, setSelectedCity] = useState('Gwalior')
-    const [startDate, setStartDate] = useState('')
-    const [endDate, setEndDate] = useState('')
+    const [selectedCity, setSelectedCity] = useState('Select City')
+    const [startDate, setStartDate] = useState('Start Date')
+    const [endDate, setEndDate] = useState('End Date')
+
+    const [isStartDatePickerVisible, setStartDatePickerVisibility] = useState(false);
+    const [isEndDatePickerVisible, setEndDatePickerVisibility] = useState(false);
+
+    const showStartDatePicker = () => {
+        setStartDatePickerVisibility(true);
+    };
+    const showEndDatePicker = () => {
+        setEndDatePickerVisibility(true);
+    };
+    const hideStartDatePicker = () => {
+        setStartDatePickerVisibility(false);
+    };
+    const hideEndDatePicker = () => {
+        setEndDatePickerVisibility(false);
+    };
+
+    const handleStartDateConfirm = (datetime) => {
+        console.warn("Start date has been picked: ", datetime);
+        setStartDate(datetime)
+        hideStartDatePicker();
+    };
+    const handleEndDateConfirm = (date) => {
+        console.warn("End date has been picked: ", date);
+        setEndDate(date)
+        hideEndDatePicker();
+    };
+
+    const handleCitySearch = () => {
+        alert("Search Button Clicked!")
+    }
 
     return (
         <View style={{
@@ -35,25 +69,59 @@ export default function Search() {
                             </Text>
                         </View>
                     </View>
-                    <View style={{
-                        width: width * 0.92, backgroundColor: '#fff', borderRadius: 32, borderWidth: 0.5, borderColor: '#3498db', padding: 8, marginTop: 18, display: 'flex', flexDirection: 'row', alignItems: 'center',
-                    }}>
-                        <Icon name="location-enter" style={{ fontSize: 36, color: "#000", }} />
-                        <TextInput
-                            style={{
-                                backgroundColor: "#fff", fontSize: 30, marginLeft: 12, color: "#000", marginTop: -1,
-                            }}
-                            value={selectedCity} multiline={true}
-                        />
-                        <Icon name="arrow-right" style={{ fontSize: 36, color: "#000", marginLeft: 142, }} />
+                    <View style={{ height: "32%" }}>
+                        <TouchableOpacity>
+                            <View style={{
+                                width: width * 0.92, backgroundColor: '#fff', borderRadius: 32, borderWidth: 0.5, borderColor: '#3498db', padding: 8, marginTop: 18, display: 'flex', flexDirection: 'row', alignItems: 'center',
+                            }}>
+                                <Icon name="location-enter" style={{ fontSize: 36, color: "#000", }} />
+                                <Text
+                                    style={{
+                                        backgroundColor: "#fff", fontSize: 30, marginLeft: 12, color: "#000", marginTop: -1,
+                                    }}
+                                >{selectedCity}</Text>
+                                <Icon name="arrow-right" style={{ fontSize: 36, color: "#000", marginLeft: 116, }} />
+                            </View>
+                        </TouchableOpacity>
+                        <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", }}>
+                            <TouchableOpacity onPress={showStartDatePicker}>
+                                <View style={{
+                                    width: width * 0.45, height: height * 0.06, backgroundColor: '#fff', borderRadius: 32, borderWidth: 0.5, borderColor: '#3498db', padding: 8, marginTop: 18, display: 'flex', flexDirection: 'row', alignItems: 'center',
+                                }}>
+                                    <Text
+                                        style={{
+                                            backgroundColor: "#fff", fontSize: 12, marginLeft: 6, color: "#000",
+                                        }}
+                                    >{startDate.datetime}</Text>
+                                    <DateTimePickerModal
+                                        isVisible={isStartDatePickerVisible}
+                                        mode="datetime"
+                                        onConfirm={handleStartDateConfirm}
+                                        onCancel={hideStartDatePicker}
+                                    />
+                                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={showEndDatePicker}>
+                                <View style={{
+                                    width: width * 0.45, height: height * 0.06, backgroundColor: '#fff', borderRadius: 32, borderWidth: 0.5, borderColor: '#3498db', padding: 8, marginTop: 18, display: 'flex', flexDirection: 'row', alignItems: 'center',
+                                }}>
+                                    <Text
+                                        style={{
+                                            backgroundColor: "#fff", fontSize: 12, marginLeft: 6, color: "#000",
+                                        }}
+                                    >{endDate.datetime}</Text>
+                                    <DateTimePickerModal
+                                        isVisible={isEndDatePickerVisible}
+                                        mode="datetime"
+                                        onConfirm={handleEndDateConfirm}
+                                        onCancel={hideEndDatePicker}
+                                    />
+                                </View>
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                    <View style={{ marginTop: 18, flexDirection: 'row', alignItems: 'center', }}>
-                        <Text style={{ fontSize: 20, fontWeight: 500, color: "#f5f5f5", letterSpacing: 1.2, marginTop: 4, opacity: 0.9 }}>
-                            Want to book in
-                        </Text>
-                        <Text style={{ textDecorationLine: 'underline', color: '#fff', marginLeft: 8, opacity: 1, fontSize: 22, fontWeight: 500, marginTop: 2, }}>
-                            different City?
-                        </Text>
+                    <View style={{ marginTop: 8, marginBottom: -8, flexDirection: 'row', alignItems: 'center', }}>
+                        <AppButton onPress={handleCitySearch} btnWidth={0.84} buttonText={'Search'} bgColor='#2980b9' borderRadius={24} />
                     </View>
                 </View>
             </View>
@@ -63,7 +131,7 @@ export default function Search() {
 
 const styles = StyleSheet.create({
     mainContainer: {
-        height: height * 0.52,
+        height: height * 0.62,
         width: width * 1,
         justifyContent: 'center',
         alignItems: 'center',
