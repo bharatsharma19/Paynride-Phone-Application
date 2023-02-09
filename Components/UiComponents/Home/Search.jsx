@@ -114,13 +114,13 @@ export default function Search() {
                             10 Lac+ Happy Customer
                         </Text>
                     </View>
-                    <View style={{ marginTop: 4, }}>
+                    <View style={{ marginTop: -4, }}>
                         <View style={{ justifyContent: 'center', alignItems: 'center', }}>
                             <Image
                                 style={{ width: 164, height: 72, resizeMode: 'contain' }}
                                 source={require('../../Assets/Rentals1.png')}
                             />
-                            <Text style={{ fontSize: 20, fontWeight: 500, color: "#fff", letterSpacing: 1.2, marginTop: 4, }}>
+                            <Text style={{ fontSize: 20, fontWeight: 500, color: "#fff", letterSpacing: 1.2, marginTop: -6, }}>
                                 Let's Find a Car for You
                             </Text>
                         </View>
