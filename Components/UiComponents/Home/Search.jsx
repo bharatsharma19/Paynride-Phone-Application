@@ -33,6 +33,7 @@ export default function Search() {
         setCityId(item.cityid)
         setSelectedCity(item.cityname)
         setModalVisible(!modalVisible)
+        setStartDatePickerVisibility(true)
     }
 
     const [modalVisible, setModalVisible] = useState(false);
@@ -86,11 +87,12 @@ export default function Search() {
 
     const handleStartDateConfirm = (date) => {
         setStartDate(moment(date).format('DD-MM-YYYY hh:mm A'));
-        hideStartDatePicker();
+        hideStartDatePicker()
+        setEndDatePickerVisibility(true)
     };
     const handleEndDateConfirm = (date) => {
         setEndDate(moment(date).format('DD-MM-YYYY hh:mm A'))
-        hideEndDatePicker();
+        hideEndDatePicker()
     };
 
     const handleCitySearch = () => {

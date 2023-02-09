@@ -10,10 +10,19 @@ import {
   DrawerItemList,
   DrawerItem,
 } from '@react-navigation/drawer';
-import {Text, Image, View, ActivityIndicator, StyleSheet} from 'react-native';
+import {
+  Text,
+  Image,
+  View,
+  ActivityIndicator,
+  StyleSheet,
+  Dimensions,
+} from 'react-native';
 import AppHeader from '../UiComponents/Common/AppHeader';
 import {getStoreData} from '../../Storage/AsyncStorage';
 import UserProfile from '../Screens/UserProfile';
+
+const {width, height} = Dimensions.get('window');
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -164,6 +173,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
+    height: height,
+    width: width * 1,
   },
   horizontal: {
     flexDirection: 'row',
