@@ -14,6 +14,13 @@ export default function Search() {
     const [cities, setCities] = useState([])
     const [cityId, setCityId] = useState("")
     const [selectedCity, setSelectedCity] = useState('Select City')
+    const [startDate, setStartDate] = useState('Start Date')
+    const [endDate, setEndDate] = useState('End Date')
+    const [daysTime, setDaysTime] = useState("")
+    const [days, setDays] = useState("")
+    const [hours, setHours] = useState("")
+
+    var minDate = new Date()
 
     const fetchAllCities = async () => {
         var response = await getData("user/display_all_cities")
@@ -61,11 +68,6 @@ export default function Search() {
         )
     }
 
-    const [startDate, setStartDate] = useState('Start Date')
-    const [endDate, setEndDate] = useState('End Date')
-
-    var minDate = new Date()
-
     const [isStartDatePickerVisible, setStartDatePickerVisibility] = useState(false);
     const [isEndDatePickerVisible, setEndDatePickerVisibility] = useState(false);
 
@@ -93,6 +95,9 @@ export default function Search() {
 
     const handleCitySearch = () => {
         alert("Search Button Clicked!")
+        /*
+        console.log({ city: selectedCity, startDate: startDate, endDate: endDate, cityid: cityId, duration: daysTime, days: days, hours: hours })
+        */
     }
 
     return (
