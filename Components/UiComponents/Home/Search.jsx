@@ -1,5 +1,5 @@
 import { React, useState } from 'react'
-import { View, Text, Dimensions, StyleSheet, Image } from 'react-native'
+import { View, Text, Dimensions, StyleSheet, Image, Alert, Modal, Pressable } from 'react-native'
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -11,6 +11,36 @@ const { width, height } = Dimensions.get('window')
 export default function Search() {
 
     const [selectedCity, setSelectedCity] = useState('Select City')
+    const [modalVisible, setModalVisible] = useState(false);
+
+    function cityModal() {
+        return (
+            <>
+                <View style={styles.centeredView}>
+                    <Modal
+                        animationType="slide"
+                        transparent={true}
+                        visible={modalVisible}
+                        onRequestClose={() => {
+                            Alert.alert('Modal has been closed.');
+                            setModalVisible(!modalVisible);
+                        }}>
+                        <View style={styles.centeredView}>
+                            <View style={styles.modalView}>
+                                <Text style={styles.modalText}>Hello World!</Text>
+                                <Pressable
+                                    style={[styles.button, styles.buttonClose]}
+                                    onPress={() => setModalVisible(!modalVisible)}>
+                                    <Text style={styles.textStyle}>Hide Modal</Text>
+                                </Pressable>
+                            </View>
+                        </View>
+                    </Modal>
+                </View>
+            </>
+        )
+    }
+
     const [startDate, setStartDate] = useState('Start Date')
     const [endDate, setEndDate] = useState('End Date')
 
@@ -71,7 +101,7 @@ export default function Search() {
                         </View>
                     </View>
                     <View style={{ height: "32%" }}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => setModalVisible(true)}>
                             <View style={{
                                 width: width * 0.92, backgroundColor: '#fff', borderRadius: 32, borderWidth: 0.5, borderColor: '#3498db', padding: 8, marginTop: 18, display: 'flex', flexDirection: 'row', alignItems: 'center',
                             }}>
@@ -128,6 +158,7 @@ export default function Search() {
                     </View>
                 </View>
             </View>
+            {cityModal()}
         </View>
     )
 }
@@ -145,5 +176,34 @@ const styles = StyleSheet.create({
         width: "98%",
         alignItems: 'center',
         borderRadius: 16,
+    },
+
+    centeredView: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 22,
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: 'white',
+        borderRadius: 20,
+        padding: 35,
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+    },
+    buttonClose: {
+        backgroundColor: '#2196F3',
+    },
+    modalText: {
+        marginBottom: 15,
+        textAlign: 'center',
     },
 });

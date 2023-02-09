@@ -148,9 +148,6 @@ const RootNavigator = () => {
       ) : (
         <>
           <View style={[styles.container, styles.horizontal]}>
-            <Text style={{fontSize: 24, fontWeight: 500, color: '#000'}}>
-              Welcome...
-            </Text>
             <ActivityIndicator
               size="large"
               style={{transform: [{scaleX: 2}, {scaleY: 2}]}}
