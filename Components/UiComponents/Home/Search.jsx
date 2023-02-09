@@ -49,7 +49,7 @@ export default function Search() {
                                     renderItem={({ item }) => <Text style={styles.item} onPress={() => handleSelectedCity(item)}>{item.cityname}</Text>}
                                 />
                                 <Pressable
-                                    style={[styles.button, styles.buttonClose]}
+                                    style={[styles.closeBtnText, styles.buttonClose]}
                                     onPress={() => setModalVisible(!modalVisible)}>
                                     <Text style={styles.textStyle}>Close</Text>
                                 </Pressable>
@@ -172,7 +172,7 @@ export default function Search() {
                             </TouchableOpacity>
                         </View>
                     </View>
-                    <View style={{ marginTop: 12, }}>
+                    <View style={{ marginTop: 44, }}>
                         <AppButton onPress={handleCitySearch} btnWidth={0.84} buttonText={'Search'} bgColor='#2980b9' borderRadius={24} />
                     </View>
                 </View>
@@ -184,7 +184,7 @@ export default function Search() {
 
 const styles = StyleSheet.create({
     mainContainer: {
-        height: height * 0.60,
+        height: height * 0.44,
         width: width * 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -201,14 +201,15 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 22,
+        marginTop: 54,
+        marginBottom: 24,
     },
 
     modalView: {
-        margin: 20,
+        margin: 24,
         backgroundColor: 'white',
         borderRadius: 20,
-        padding: 35,
+        padding: 36,
         alignItems: 'center',
         shadowColor: '#000',
         shadowOffset: {
@@ -221,8 +222,12 @@ const styles = StyleSheet.create({
     },
 
     buttonClose: {
-        backgroundColor: '#2196F3',
-        justifyContent: 'flex-end',
+        marginLeft: 128,
+    },
+
+    textStyle: {
+        color: "#000",
+        fontSize: 20,
     },
 
     modalText: {
@@ -231,8 +236,9 @@ const styles = StyleSheet.create({
     },
 
     item: {
-        padding: 10,
         fontSize: 18,
-        height: 44,
+        height: 42,
+        width: 164,
+        color: "#000",
     },
 });
