@@ -1,16 +1,33 @@
-import { React, useState } from 'react'
-import { View, Text, Dimensions, StyleSheet, Image, Alert, Modal, Pressable } from 'react-native'
+import { React, useState, useEffect } from 'react'
+import { View, Text, Dimensions, StyleSheet, Image, Alert, Modal, Pressable, FlatList } from 'react-native'
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AppButton from '../Common/Button';
 import moment from 'moment';
+import { getData } from '../../../Services/FetchNodeServices';
 
 const { width, height } = Dimensions.get('window')
 
 export default function Search() {
 
+    const [cities, setCities] = useState([])
+    const [cityId, setCityId] = useState("")
     const [selectedCity, setSelectedCity] = useState('Select City')
+
+    const fetchAllCities = async () => {
+        var response = await getData("user/display_all_cities")
+        setCities(response.data)
+    }
+    useEffect(function () {
+        fetchAllCities()
+    }, [])
+    const handleSelectedCity = (item) => {
+        setCityId(item.cityid)
+        setSelectedCity(item.cityname)
+        setModalVisible(!modalVisible)
+    }
+
     const [modalVisible, setModalVisible] = useState(false);
 
     function cityModal() {
@@ -22,16 +39,19 @@ export default function Search() {
                         transparent={true}
                         visible={modalVisible}
                         onRequestClose={() => {
-                            Alert.alert('Modal has been closed.');
+                            Alert.alert('City Selected!');
                             setModalVisible(!modalVisible);
                         }}>
                         <View style={styles.centeredView}>
                             <View style={styles.modalView}>
-                                <Text style={styles.modalText}>Hello World!</Text>
+                                <FlatList
+                                    data={cities}
+                                    renderItem={({ item }) => <Text style={styles.item} onPress={() => handleSelectedCity(item)}>{item.cityname}</Text>}
+                                />
                                 <Pressable
                                     style={[styles.button, styles.buttonClose]}
                                     onPress={() => setModalVisible(!modalVisible)}>
-                                    <Text style={styles.textStyle}>Hide Modal</Text>
+                                    <Text style={styles.textStyle}>Close</Text>
                                 </Pressable>
                             </View>
                         </View>
@@ -111,7 +131,6 @@ export default function Search() {
                                         backgroundColor: "#fff", fontSize: 30, marginLeft: 12, fontWeight: 'bold', color: "#000", marginTop: -1,
                                     }}
                                 >{selectedCity}</Text>
-                                <Icon name="arrow-right" style={{ fontSize: 36, color: "#000", marginLeft: 116, }} />
                             </View>
                         </TouchableOpacity>
                         <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", }}>
@@ -184,6 +203,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 22,
     },
+
     modalView: {
         margin: 20,
         backgroundColor: 'white',
@@ -199,11 +219,20 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5,
     },
+
     buttonClose: {
         backgroundColor: '#2196F3',
+        justifyContent: 'flex-end',
     },
+
     modalText: {
         marginBottom: 15,
         textAlign: 'center',
+    },
+
+    item: {
+        padding: 10,
+        fontSize: 18,
+        height: 44,
     },
 });
