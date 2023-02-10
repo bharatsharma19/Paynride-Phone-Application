@@ -57,7 +57,7 @@ const Bookings = () => {
                                 </Text>
                             </View>
                         </View>
-                        <View style={{ marginTop: width * 0.048, }}>
+                        <View style={{ marginTop: width * 0.072, }}>
                             <View>
                                 <Text style={{ color: "#000", fontSize: 24, fontWeight: 500, }}>
                                     {'\u20B9'} {item.rentperhour}
@@ -71,15 +71,21 @@ const Bookings = () => {
                         </View>
                     </View>
 
-                    <View style={{ flex: 0.46, display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
+                    <View style={{ flex: 0.46, display: 'flex', justifyContent: 'center', alignItems: 'center', alignContent: 'center', }}>
                         <View>
                             <Image style={{ resizeMode: 'contain', width: 164, height: 112, }}
                                 source={{
                                     uri: `${ServerURL}/images/${item.vehicleicon}`,
                                 }} />
                         </View>
-                        <View style={{ marginTop: -12, alignItems: 'center', }}>
-                            <AppButton buttonText={"Book"} borderRadius={24} btnWidth={'0.24'} margintop={0} marginleft={0} marginright={0} pd={0} />
+                        <View style={{ alignItems: 'center', }}>
+                            {item.vehiclebookingstatus === 'Not Booked' ? <>
+                                <AppButton buttonText={"Book"} borderRadius={24} btnWidth={'0.24'} margintop={0} marginleft={0} marginright={0} pd={0} />
+                            </> : <>
+                                <Text style={{ color: "red", fontFamily: "Poppins", fontSize: 24, fontWeight: 800, }}>
+                                    Sold Out!
+                                </Text>
+                            </>}
                         </View>
                     </View>
                 </View >
