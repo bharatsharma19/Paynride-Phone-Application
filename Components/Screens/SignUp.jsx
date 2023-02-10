@@ -1,4 +1,4 @@
-import { StyleSheet, Text, Dimensions, View, ScrollView, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, Dimensions, View, ScrollView, TouchableOpacity, Alert } from 'react-native'
 import { React, useState } from 'react'
 import Input from '../UiComponents/Common/Input'
 import AppButton from '../UiComponents/Common/Button'
@@ -55,7 +55,9 @@ const SignUp = ({ navigation }) => {
             var response = await postData("user/userdetailssubmitted", body);
 
             if (response.status) {
-                navigation.navigate("Login")
+                Alert.alert('Success', 'Registered Successfully...', [
+                    { text: 'Continue', onPress: (navigation.navigate("Login")) },
+                ]);
             }
             else {
                 alert("Error")
@@ -98,7 +100,7 @@ const SignUp = ({ navigation }) => {
                 <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
                     <View>
                         <Text style={{ color: "#000", textDecorationLine: 'underline', fontSize: 24, fontWeight: 600 }}>
-                            SignUp
+                            Sign Up
                         </Text>
                     </View>
 
@@ -122,7 +124,7 @@ const SignUp = ({ navigation }) => {
                                 flexDirection: 'row',
                                 alignItems: 'center',
                                 marginBottom: 6,
-                                height: height * 0.095,
+                                height: height * 0.092,
                                 marginLeft: 2,
                             }}>
                                 <Icon name="calendar-text-outline" style={{ fontSize: 22, color: "#000", marginRight: 4, }} />
