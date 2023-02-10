@@ -22,6 +22,7 @@ import AppHeader from '../UiComponents/Common/AppHeader';
 import {getStoreData} from '../Storage/AsyncStorage';
 import UserProfile from '../Screens/UserProfile';
 import Bookings from '../Screens/Bookings';
+import SignUp from '../Screens/SignUp';
 
 const {width, height} = Dimensions.get('window');
 
@@ -135,6 +136,11 @@ const RootNavigator = () => {
     <NavigationContainer>
       {initialScreen ? (
         <Stack.Navigator initialRouteName={initialScreen}>
+          <Stack.Screen
+            name="Register"
+            component={SignUp}
+            options={{headerShown: false}}
+          />
           <Stack.Screen
             name="Login"
             component={Login}

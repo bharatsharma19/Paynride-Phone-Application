@@ -7,12 +7,12 @@ import {
     View,
 } from 'react-native';
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
+
 const { width } = Dimensions.get('window')
 
-export default function Input({ labelTxt, keyboardType, placeholder, error, iconName, setValue, ...props }) {
+export default function Input({ keyboardType, placeholder, error, iconName, setValue, ...props }) {
     return (
         <View style={{ padding: 4, width: width * 0.8, marginTop: 4, marginBottom: 4 }}>
-            <Text style={styles.title}>{labelTxt}</Text>
             <View style={styles.textContainer}>
                 <Icon name={iconName} style={{ fontSize: 22, color: "#000", marginRight: 4, }} />
                 <TextInput
@@ -42,16 +42,5 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 6,
-    },
-
-    title: {
-        marginTop: 16,
-        paddingVertical: 8,
-        color: '#20232a',
-        textAlign: 'center',
-        fontSize: 22,
-        fontWeight: 'bold',
-        fontFamily: 'Poppins',
-        marginBottom: 4,
     },
 });

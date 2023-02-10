@@ -150,7 +150,9 @@ const Search = ({ navigation }) => {
                                         style={{
                                             backgroundColor: "#fff", fontSize: 16, fontWeight: 'bold', marginLeft: 6, color: "#000",
                                         }}
-                                    >{startDate}</Text>
+                                    >
+                                        {startDate}
+                                    </Text>
                                     <DateTimePickerModal
                                         isVisible={isStartDatePickerVisible}
                                         mode="datetime"
@@ -168,7 +170,9 @@ const Search = ({ navigation }) => {
                                         style={{
                                             backgroundColor: "#fff", fontSize: 16, fontWeight: 'bold', marginLeft: 6, color: "#000",
                                         }}
-                                    >{endDate}</Text>
+                                    >
+                                        {endDate}
+                                    </Text>
                                     <DateTimePickerModal
                                         isVisible={isEndDatePickerVisible}
                                         mode="datetime"

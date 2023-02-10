@@ -3,6 +3,8 @@ import {
     StyleSheet,
     View,
     Dimensions,
+    TouchableOpacity,
+    Text
 } from 'react-native';
 import { postData } from '../Services/FetchNodeServices';
 import Input from '../UiComponents/Common/Input';
@@ -53,13 +55,39 @@ const Login = ({ navigation }) => {
         setError(prevStates => ({ ...prevStates, [attr]: txt }))
     }
 
+    const handleRegisterBtn = () => {
+        navigation.navigate("Register")
+    }
+
     return (
-        <View style={styles.container}>
-            <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
-                <Input labelTxt="Login" iconName="phone" placeholder="Mobile Number" keyboardType="numeric" error={error.mobileEmail} onFocus={() => handleErrors(null, "mobileEmail")} onChangeText={(txt) => handleValues(txt, 'mobileEmail')} />
-                <AppButton onPress={handleLoginClick} btnWidth={0.75} buttonText={'Sign In'} bgColor='#e67e22' />
+        <>
+            <View style={styles.container}>
+                <Text style={{
+                    marginTop: 16,
+                    paddingVertical: 8,
+                    color: '#20232a',
+                    textAlign: 'center',
+                    fontSize: 22,
+                    fontWeight: 'bold',
+                    fontFamily: 'Poppins',
+                    marginBottom: 4,
+                }}>
+                    Login
+                </Text>
+                <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
+                    <Input iconName="phone" placeholder="Mobile Number" keyboardType="numeric" error={error.mobileEmail} onFocus={() => handleErrors(null, "mobileEmail")} onChangeText={(txt) => handleValues(txt, 'mobileEmail')} />
+
+                    <AppButton onPress={handleLoginClick} btnWidth={0.78} buttonText={'Sign In'} bgColor='#2980b9' borderRadius={24} />
+                </View>
+                <TouchableOpacity onPress={handleRegisterBtn}>
+                    <View style={{ marginTop: height * 0.008, marginLeft: "auto", marginRight: "auto", }}>
+                        <Text style={{ color: "#000", fontSize: 20, fontWeight: 500, }}>
+                            Don't Have an Account? Sign Up
+                        </Text>
+                    </View>
+                </TouchableOpacity>
             </View>
-        </View>
+        </>
     );
 };
 
