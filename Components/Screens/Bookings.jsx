@@ -23,7 +23,7 @@ const Bookings = () => {
         return (
             <>
                 <View style={{ height: height * 0.24, width: width * 0.96, backgroundColor: "#fff", marginTop: 8, borderRadius: 14, padding: 12, display: 'flex', flexDirection: 'row', marginBottom: 16, }}>
-                    <View style={{ flex: 0.54, marginRight: 8, }}>
+                    <View style={{ flex: 0.54, marginRight: width * 0.112, }}>
                         <View>
                             <Text style={{ fontSize: 20, fontWeight: '500', color: "#95a5a6", letterSpacing: 1.02, }}>
                                 {item.companyname}
@@ -36,44 +36,44 @@ const Bookings = () => {
                         </View>
                         <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginTop: 6, }}>
                             <View style={{ display: "flex", flexDirection: 'row', marginRight: 2, }}>
-                                <Image style={{ resizeMode: 'contain', marginTop: 2, marginLeft: 2, marginRight: 4, }}
+                                <Image style={{ resizeMode: 'contain', marginTop: 2.5, marginLeft: 2, marginRight: 4, }}
                                     source={require('../Assets/petrol.png')} />
-                                <Text style={{ fontWeight: 700, }}>
+                                <Text style={{ fontWeight: 500, color: "#000", }}>
                                     {item.fueltype}
                                 </Text>
                             </View>
                             <View style={{ display: "flex", flexDirection: 'row', marginRight: 2, }}>
                                 <Image style={{ resizeMode: 'contain', marginTop: 3, marginLeft: 2, marginRight: 4, }}
                                     source={require('../Assets/automatic.png')} />
-                                <Text style={{ fontWeight: 700, }}>
+                                <Text style={{ fontWeight: 500, color: "#000", }}>
                                     {item.transmission}
                                 </Text>
                             </View>
                             <View style={{ display: "flex", flexDirection: 'row', marginRight: 2, }}>
                                 <Image style={{ resizeMode: 'contain', marginTop: 3, marginLeft: 2, marginRight: 4, }}
                                     source={require('../Assets/seat.png')} />
-                                <Text style={{ fontWeight: 700, }}>
+                                <Text style={{ fontWeight: 500, color: "#000", }}>
                                     {item.capacity} Seats
                                 </Text>
                             </View>
                         </View>
-                        <View style={{ marginTop: 6, }}>
+                        <View style={{ marginTop: width * 0.048, }}>
                             <View>
                                 <Text style={{ color: "#000", fontSize: 24, fontWeight: 500, }}>
                                     {'\u20B9'} {item.rentperhour}
                                 </Text>
                             </View>
                             <View>
-                                <Text style={{ color: "#95a5a6", fontSize: 16, fontWeight: 500, }}>
+                                <Text style={{ color: "#000", fontSize: 16, fontWeight: 500, }}>
                                     Price Exclude Fuel Cost
                                 </Text>
                             </View>
                         </View>
                     </View>
 
-                    <View style={{ flex: 0.46, display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 8, marginLeft: 8, }}>
+                    <View style={{ flex: 0.46, display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
                         <View>
-                            <Image style={{ resizeMode: 'contain', width: 164, height: 96, }}
+                            <Image style={{ resizeMode: 'contain', width: 164, height: 112, }}
                                 source={{
                                     uri: `${ServerURL}/images/${item.vehicleicon}`,
                                 }} />
@@ -82,7 +82,7 @@ const Bookings = () => {
                             <AppButton buttonText={"Book"} borderRadius={24} btnWidth={'0.24'} margintop={0} marginleft={0} marginright={0} pd={0} />
                         </View>
                     </View>
-                </View>
+                </View >
             </>
         )
     }
