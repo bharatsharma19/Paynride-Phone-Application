@@ -9,7 +9,7 @@ import { getData } from '../../../Services/FetchNodeServices';
 
 const { width, height } = Dimensions.get('window')
 
-export default function Search() {
+const Search = ({ navigation }) => {
 
     const [cities, setCities] = useState([])
     const [cityId, setCityId] = useState("")
@@ -96,10 +96,11 @@ export default function Search() {
     };
 
     const handleCitySearch = () => {
-        alert("Search Button Clicked!")
+        //alert("Search Button Clicked!")
         /*
         console.log({ city: selectedCity, startDate: startDate, endDate: endDate, cityid: cityId, duration: daysTime, days: days, hours: hours })
         */
+        navigation.navigate("AvailableCars")
     }
 
     return (
@@ -249,3 +250,5 @@ const styles = StyleSheet.create({
         color: "#000",
     },
 });
+
+export default Search

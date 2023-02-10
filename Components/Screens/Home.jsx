@@ -3,6 +3,7 @@ import {
     StyleSheet,
     View,
     Dimensions,
+    SafeAreaView
 } from 'react-native';
 import Faq from '../UiComponents/Home/Faq';
 import Featured from '../UiComponents/Home/Featured';
@@ -13,28 +14,30 @@ import Search from '../UiComponents/Home/Search';
 
 const { width, height } = Dimensions.get('window')
 
-const HomePage = () => {
+const HomePage = ({ navigation }) => {
     return (
-        <View style={styles.container}>
-            <View>
-                <Search />
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#f2f2f2', }}>
+            <View style={styles.container}>
+                <View>
+                    <Search navigation={navigation} />
+                </View>
+                <View style={{ marginTop: 4, }}>
+                    <Featured />
+                </View>
+                <View style={{ marginTop: 4, }}>
+                    <Offer />
+                </View>
+                <View style={{ marginTop: 4, }}>
+                    <Journey />
+                </View>
+                <View style={{ marginTop: 4, }}>
+                    <Investors />
+                </View>
+                <View style={{ marginTop: 4, }}>
+                    <Faq />
+                </View>
             </View>
-            <View style={{ marginTop: 4, }}>
-                <Featured />
-            </View>
-            <View style={{ marginTop: 4, }}>
-                <Offer />
-            </View>
-            <View style={{ marginTop: 4, }}>
-                <Journey />
-            </View>
-            <View style={{ marginTop: 4, }}>
-                <Investors />
-            </View>
-            <View style={{ marginTop: 4, }}>
-                <Faq />
-            </View>
-        </View>
+        </SafeAreaView>
     );
 };
 

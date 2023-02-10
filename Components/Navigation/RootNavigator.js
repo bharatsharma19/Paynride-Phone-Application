@@ -21,6 +21,7 @@ import {
 import AppHeader from '../UiComponents/Common/AppHeader';
 import {getStoreData} from '../../Storage/AsyncStorage';
 import UserProfile from '../Screens/UserProfile';
+import Bookings from '../Screens/Bookings';
 
 const {width, height} = Dimensions.get('window');
 
@@ -149,6 +150,13 @@ const RootNavigator = () => {
           <Stack.Screen
             name="Profile"
             component={ProjectDrawer}
+            options={{
+              header: AppHeader,
+            }}
+          />
+          <Stack.Screen
+            name="AvailableCars"
+            component={Bookings}
             options={{
               header: AppHeader,
             }}
