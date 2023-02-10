@@ -180,7 +180,7 @@ const Search = ({ navigation }) => {
                             </TouchableOpacity>
                         </View>
                     </View>
-                    <View style={{ marginTop: 44, }}>
+                    <View style={{ marginTop: 44, alignItems: 'center', }}>
                         <AppButton onPress={handleCitySearch} btnWidth={0.84} buttonText={'Search'} bgColor='#2980b9' borderRadius={24} />
                     </View>
                 </View>
