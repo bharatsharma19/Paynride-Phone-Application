@@ -22,7 +22,7 @@ const Bookings = () => {
     const RenderItem = ({ item }) => {
         return (
             <>
-                <View style={{ height: height * 0.24, width: width * 0.96, backgroundColor: "#fff", marginTop: 8, borderRadius: 14, padding: 12, display: 'flex', flexDirection: 'row', marginBottom: 16, }}>
+                <View style={{ height: 178, width: width * 0.96, backgroundColor: "#fff", marginTop: 8, borderRadius: 14, padding: 12, display: 'flex', flexDirection: 'row', marginBottom: 16, }}>
                     <View style={{ flex: 0.54, marginRight: width * 0.112, }}>
                         <View>
                             <Text style={{ fontSize: 20, fontWeight: '500', color: "#95a5a6", letterSpacing: 1.02, }}>
@@ -57,7 +57,7 @@ const Bookings = () => {
                                 </Text>
                             </View>
                         </View>
-                        <View style={{ marginTop: width * 0.072, }}>
+                        <View style={{ marginTop: 6, }}>
                             <View>
                                 <Text style={{ color: "#000", fontSize: 24, fontWeight: 500, }}>
                                     {'\u20B9'} {item.rentperhour}
@@ -71,7 +71,7 @@ const Bookings = () => {
                         </View>
                     </View>
 
-                    <View style={{ flex: 0.46, display: 'flex', justifyContent: 'center', alignItems: 'center', alignContent: 'center', }}>
+                    <View style={{ flex: 0.46, display: 'flex', justifyContent: 'center', alignItems: 'center', alignContent: 'center', marginTop: -36, }}>
                         <View>
                             <Image style={{ resizeMode: 'contain', width: 164, height: 112, }}
                                 source={{
@@ -80,9 +80,9 @@ const Bookings = () => {
                         </View>
                         <View style={{ alignItems: 'center', }}>
                             {item.vehiclebookingstatus === 'Not Booked' ? <>
-                                <AppButton buttonText={"Book"} borderRadius={24} btnWidth={'0.24'} margintop={0} marginleft={0} marginright={0} pd={0} />
+                                <AppButton buttonText={"Proceed"} borderRadius={24} btnWidth={'0.32'} margintop={0} marginleft={0} marginright={0} pd={0} />
                             </> : <>
-                                <Text style={{ color: "red", fontFamily: "Poppins", fontSize: 24, fontWeight: 800, }}>
+                                <Text style={{ color: "red", fontFamily: "Poppins", fontSize: 24, fontWeight: 800, marginTop: 12, }}>
                                     Sold Out!
                                 </Text>
                             </>}
