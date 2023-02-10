@@ -1,7 +1,7 @@
 import { Dimensions, TouchableOpacity, View, Text } from "react-native"
 const { width } = Dimensions.get('window')
 
-export default function AppButton({ buttonText, borderRadius, btnWidth, bgColor, ...props }) {
+export default function AppButton({ buttonText, borderRadius, btnWidth, bgColor, margintop, marginleft, marginright, pd, ...props }) {
     return (
         <TouchableOpacity {...props}>
             <View style={{
@@ -10,12 +10,12 @@ export default function AppButton({ buttonText, borderRadius, btnWidth, bgColor,
                 borderRadius: borderRadius ? borderRadius : 10,
                 borderWidth: 0.5,
                 borderColor: bgColor,
-                padding: 10,
-                marginTop: 10,
+                padding: pd ? pd : 10,
+                marginTop: margintop ? margintop : 10,
                 display: 'flex',
                 alignItems: 'center',
-                marginLeft: 12,
-                marginRight: "auto",
+                marginLeft: marginleft ? marginleft : 12,
+                marginRight: marginright ? marginright : "auto",
             }}>
                 <Text style={{ color: '#fff', fontSize: 20, fontWeight: 'bold' }}>
                     {buttonText}
