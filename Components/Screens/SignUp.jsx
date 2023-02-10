@@ -87,7 +87,7 @@ const SignUp = ({ navigation }) => {
 
     const handleDobConfirm = (date) => {
         setDob(moment(date).format('YYYY-MM-DD'))
-        hideEndDatePicker();
+        hideDobPicker();
     };
 
     return (
