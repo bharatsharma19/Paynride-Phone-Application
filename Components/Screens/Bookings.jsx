@@ -3,7 +3,7 @@ import { React, useState, useEffect } from 'react'
 import { postData, ServerURL } from '../Services/FetchNodeServices'
 import AppButton from '../UiComponents/Common/Button'
 
-const { width, height } = Dimensions.get('window')
+const { width } = Dimensions.get('window')
 
 const Bookings = () => {
     const [availableCars, setAvailableCars] = useState([])
@@ -22,7 +22,7 @@ const Bookings = () => {
     const RenderItem = ({ item }) => {
         return (
             <>
-                <View style={{ height: 178, width: width * 0.96, backgroundColor: "#fff", marginTop: 8, borderRadius: 14, padding: 12, display: 'flex', flexDirection: 'row', marginBottom: 16, }}>
+                <View style={{ height: 184, width: width * 0.96, backgroundColor: "#fff", marginTop: 8, borderRadius: 14, padding: 12, display: 'flex', flexDirection: 'row', marginBottom: 16, }}>
                     <View style={{ flex: 0.54, marginRight: width * 0.112, }}>
                         <View>
                             <Text style={{ fontSize: 20, fontWeight: '500', color: "#95a5a6", letterSpacing: 1.02, }}>
@@ -57,7 +57,7 @@ const Bookings = () => {
                                 </Text>
                             </View>
                         </View>
-                        <View style={{ marginTop: 6, }}>
+                        <View style={{ marginTop: 16, }}>
                             <View>
                                 <Text style={{ color: "#000", fontSize: 24, fontWeight: 500, }}>
                                     {'\u20B9'} {item.rentperhour}
