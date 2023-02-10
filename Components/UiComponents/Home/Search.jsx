@@ -5,7 +5,7 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AppButton from '../Common/Button';
 import moment from 'moment';
-import { getData } from '../../../Services/FetchNodeServices';
+import { getData } from '../../Services/FetchNodeServices';
 
 const { width, height } = Dimensions.get('window')
 

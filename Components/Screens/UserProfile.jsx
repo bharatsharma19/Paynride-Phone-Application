@@ -2,7 +2,7 @@
 
 import { Dimensions, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { getStoreData } from '../../Storage/AsyncStorage'
+import { getStoreData } from '../Storage/AsyncStorage'
 
 const { width, height } = Dimensions.get('window')
 

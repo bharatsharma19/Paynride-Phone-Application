@@ -19,7 +19,7 @@ import {
   Dimensions,
 } from 'react-native';
 import AppHeader from '../UiComponents/Common/AppHeader';
-import {getStoreData} from '../../Storage/AsyncStorage';
+import {getStoreData} from '../Storage/AsyncStorage';
 import UserProfile from '../Screens/UserProfile';
 import Bookings from '../Screens/Bookings';
 

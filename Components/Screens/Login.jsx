@@ -4,10 +4,10 @@ import {
     View,
     Dimensions,
 } from 'react-native';
-import { postData } from '../../Services/FetchNodeServices';
+import { postData } from '../Services/FetchNodeServices';
 import Input from '../UiComponents/Common/Input';
 import AppButton from '../UiComponents/Common/Button';
-import { storeData } from '../../Storage/AsyncStorage';
+import { storeData } from '../Storage/AsyncStorage';
 
 const { width, height } = Dimensions.get('window')
 
