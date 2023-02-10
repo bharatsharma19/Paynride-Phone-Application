@@ -25,15 +25,11 @@ const SignUp = ({ navigation }) => {
             isValid = false
         }
         if (!inputs.email) {
-            handleErrors("Pls Enter your Email", "email")
+            handleErrors("Pls Enter your Email Address", "email")
             isValid = false
         }
         if (!inputs.name) {
             handleErrors("Pls Enter your Name", "name")
-            isValid = false
-        }
-        if (!dob) {
-            handleErrors("Pls Enter your Date of Birth", "dob")
             isValid = false
         }
         if (!inputs.aadhar) {
@@ -100,7 +96,7 @@ const SignUp = ({ navigation }) => {
                 <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
                     <View>
                         <Text style={{ color: "#000", textDecorationLine: 'underline', fontSize: 24, fontWeight: 600 }}>
-                            Sign Up
+                            Enter your Details
                         </Text>
                     </View>
 
@@ -160,8 +156,6 @@ const SignUp = ({ navigation }) => {
     )
 }
 
-export default SignUp
-
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
@@ -172,3 +166,5 @@ const styles = StyleSheet.create({
         marginTop: height * 0.024,
     },
 })
+
+export default SignUp
