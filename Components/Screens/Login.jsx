@@ -3,11 +3,10 @@ import {
     StyleSheet,
     View,
     Dimensions,
-    TouchableOpacity,
     Text,
     Modal,
-    Pressable,
-    TextInput
+    TextInput,
+    Alert
 } from 'react-native';
 import { postData } from '../Services/FetchNodeServices';
 import Input from '../UiComponents/Common/Input';
@@ -30,12 +29,20 @@ const Login = ({ navigation }) => {
         return isValid
     }
 
+    const [userDetails, setUserDetails] = useState([])
     const [generatedOtp, setGeneratedOtp] = useState("")
     const [enteredOtp, setEnteredOtp] = useState("")
 
-    const handleOtpClick = () => {
+    const checkUser = async (mobileNumber) => {
+        var response = await postData("user/checkuser", { mobileno: mobileNumber });
+        setUserDetails(response)
+    }
+
+    const handleOtpClick = async () => {
         if (validate()) {
             if (inputs.mobileEmail.length === 10) {
+                checkUser(inputs.mobileEmail)
+
                 let otp = parseInt(Math.random() * 899999) + 100000
                 setGeneratedOtp(otp)
                 console.warn(otp)
@@ -54,16 +61,25 @@ const Login = ({ navigation }) => {
         let tempOtp = await parseInt(enteredOtp)
 
         if (generatedOtp === tempOtp) {
+            //console.log(userDetails)
             setModalVisible(false)
 
-            var result = await postData('user/checkuser', { mobileno: inputs.mobileEmail })
+            if (userDetails.status) {
+                var result = await postData('user/checkuser', { mobileno: inputs.mobileEmail })
 
-            if (result.status) {
-                storeData('UserData', result.data)
-                navigation.navigate("Home")
+                if (result.status) {
+                    storeData('UserData', result.data)
+                    navigation.navigate("Home")
+
+                    Alert.alert('Success', 'Logged In Successfully...');
+                }
+                else {
+                    alert("Error")
+                }
             }
             else {
-                alert("Please Sign Up to Continue...")
+                alert("You are not registered, Sign Up to Continue...")
+                navigation.navigate("Register")
             }
         }
         else {
@@ -75,10 +91,6 @@ const Login = ({ navigation }) => {
     }
     const handleErrors = (txt, attr) => {
         setError(prevStates => ({ ...prevStates, [attr]: txt }))
-    }
-
-    const handleRegisterBtn = () => {
-        navigation.navigate("Register")
     }
 
     const [modalVisible, setModalVisible] = useState(false);
@@ -172,13 +184,6 @@ const Login = ({ navigation }) => {
 
                     <AppButton onPress={handleOtpClick} btnWidth={0.78} buttonText={'Get Otp'} bgColor='#2980b9' borderRadius={24} />
                 </View>
-                <TouchableOpacity onPress={handleRegisterBtn}>
-                    <View style={{ marginTop: height * 0.008, marginLeft: "auto", marginRight: "auto", }}>
-                        <Text style={{ color: "#000", fontSize: 20, fontWeight: 500, }}>
-                            Don't Have an Account? Sign Up
-                        </Text>
-                    </View>
-                </TouchableOpacity>
             </View>
             {otpModal()}
         </>
