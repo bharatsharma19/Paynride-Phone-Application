@@ -26,9 +26,9 @@ const Search = ({ navigation }) => {
         var response = await getData("user/display_all_cities")
         setCities(response.data)
     }
-    useEffect(function () {
+    useEffect(() => {
         fetchAllCities()
-    }, [])
+    }, []);
     const handleSelectedCity = (item) => {
         setCityId(item.cityid)
         setSelectedCity(item.cityname)
