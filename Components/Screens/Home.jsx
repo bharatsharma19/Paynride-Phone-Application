@@ -3,7 +3,8 @@ import {
     StyleSheet,
     View,
     Dimensions,
-    SafeAreaView
+    SafeAreaView,
+    ScrollView
 } from 'react-native';
 import Faq from '../UiComponents/Home/Faq';
 import Featured from '../UiComponents/Home/Featured';
@@ -16,28 +17,32 @@ const { width, height } = Dimensions.get('window')
 
 const HomePage = ({ navigation }) => {
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#f2f2f2', }}>
-            <View style={styles.container}>
-                <View>
-                    <Search navigation={navigation} />
-                </View>
-                <View style={{ marginTop: 4, }}>
-                    <Featured />
-                </View>
-                <View style={{ marginTop: 4, }}>
-                    <Offer />
-                </View>
-                <View style={{ marginTop: 4, }}>
-                    <Journey />
-                </View>
-                <View style={{ marginTop: 4, }}>
-                    <Investors />
-                </View>
-                <View style={{ marginTop: 4, }}>
-                    <Faq />
-                </View>
-            </View>
-        </SafeAreaView>
+        <>
+            <ScrollView>
+                <SafeAreaView style={{ flex: 1, backgroundColor: '#f2f2f2', }}>
+                    <View style={styles.container}>
+                        <View>
+                            <Search navigation={navigation} />
+                        </View>
+                        <View style={{ marginTop: 4, }}>
+                            <Featured />
+                        </View>
+                        <View style={{ marginTop: 4, }}>
+                            <Offer />
+                        </View>
+                        <View style={{ marginTop: 4, }}>
+                            <Journey />
+                        </View>
+                        <View style={{ marginTop: 4, }}>
+                            <Investors />
+                        </View>
+                        <View style={{ marginTop: 4, }}>
+                            <Faq />
+                        </View>
+                    </View>
+                </SafeAreaView>
+            </ScrollView>
+        </>
     );
 };
 
