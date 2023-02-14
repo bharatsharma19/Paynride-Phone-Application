@@ -23,6 +23,7 @@ import {getStoreData} from '../Storage/AsyncStorage';
 import UserProfile from '../Screens/UserProfile';
 import Bookings from '../Screens/Bookings';
 import SignUp from '../Screens/SignUp';
+import FinalBooking from '../Screens/FinalBooking';
 
 const {width, height} = Dimensions.get('window');
 
@@ -163,6 +164,13 @@ const RootNavigator = () => {
           <Stack.Screen
             name="AvailableCars"
             component={Bookings}
+            options={{
+              header: AppHeader,
+            }}
+          />
+          <Stack.Screen
+            name="FinalBooking"
+            component={FinalBooking}
             options={{
               header: AppHeader,
             }}
