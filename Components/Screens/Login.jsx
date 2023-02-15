@@ -6,7 +6,8 @@ import {
     Text,
     Modal,
     TextInput,
-    Alert
+    Alert,
+    Image
 } from 'react-native';
 import { postData } from '../Services/FetchNodeServices';
 import Input from '../UiComponents/Common/Input';
@@ -167,6 +168,12 @@ const Login = ({ navigation }) => {
                 backgroundColor: '#f2f2f2',
                 opacity: modalVisible ? 0.1 : 1,
             }}>
+                <View style={{ marginLeft: width * 0.21 }}>
+                    <Image
+                        style={{ width: 164, height: 72, resizeMode: 'contain' }}
+                        source={require('../Assets/Rentals1.png')}
+                    />
+                </View>
                 <Text style={{
                     marginTop: 16,
                     paddingVertical: 8,
