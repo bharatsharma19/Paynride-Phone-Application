@@ -5,7 +5,6 @@ const FinalBooking = () => {
     return (
         <View>
             <Text>FinalBooking</Text>
-            <Text>Yet to be Updated...</Text>
         </View>
     )
 }
