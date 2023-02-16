@@ -18,6 +18,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 const { width, height } = Dimensions.get('window')
 
 const Login = ({ navigation }) => {
+
     const [inputs, setInputs] = useState({ mobileEmail: '', enteredOtp: '' })
     const [error, setError] = useState({})
     const validate = () => {
@@ -43,6 +44,8 @@ const Login = ({ navigation }) => {
     const [enteredOtp, setEnteredOtp] = useState("")
 
     const handleEnteredOtp = (txt) => {
+        setValueSix(txt)
+
         setEnteredOtp(parseInt(valueOne + valueTwo + valueThree + valueFour + valueFive + txt))
     }
 
@@ -136,17 +139,15 @@ const Login = ({ navigation }) => {
 
                                     <View style={styles.otpContainer}>
                                         <TextInput
-                                            style={{ fontSize: 24, color: "#000" }}
-                                            cursorColor='#000'
+                                            style={{ fontSize: 16, color: "#000" }}
                                             keyboardType={'number-pad'}
                                             maxLength={1} onChangeText={(txt) => setValueOne(txt)}
                                             value={valueOne}
-                                            color='#000'
                                         />
                                     </View>
                                     <View style={styles.otpContainer}>
                                         <TextInput
-                                            style={{ fontSize: 24, color: "#000" }}
+                                            style={{ fontSize: 16, color: "#000" }}
                                             keyboardType={'number-pad'}
                                             maxLength={1} onChangeText={(txt) => setValueTwo(txt)}
                                             value={valueTwo}
@@ -154,7 +155,7 @@ const Login = ({ navigation }) => {
                                     </View>
                                     <View style={styles.otpContainer}>
                                         <TextInput
-                                            style={{ fontSize: 24, color: "#000" }}
+                                            style={{ fontSize: 16, color: "#000" }}
                                             keyboardType={'number-pad'}
                                             maxLength={1} onChangeText={(txt) => setValueThree(txt)}
                                             value={valueThree}
@@ -162,7 +163,7 @@ const Login = ({ navigation }) => {
                                     </View>
                                     <View style={styles.otpContainer}>
                                         <TextInput
-                                            style={{ fontSize: 24, color: "#000" }}
+                                            style={{ fontSize: 16, color: "#000" }}
                                             keyboardType={'number-pad'}
                                             maxLength={1} onChangeText={(txt) => setValueFour(txt)}
                                             value={valueFour}
@@ -170,7 +171,7 @@ const Login = ({ navigation }) => {
                                     </View>
                                     <View style={styles.otpContainer}>
                                         <TextInput
-                                            style={{ fontSize: 24, color: "#000" }}
+                                            style={{ fontSize: 16, color: "#000" }}
                                             keyboardType={'number-pad'}
                                             maxLength={1} onChangeText={(txt) => setValueFive(txt)}
                                             value={valueFive}
@@ -178,7 +179,7 @@ const Login = ({ navigation }) => {
                                     </View>
                                     <View style={styles.otpContainer}>
                                         <TextInput
-                                            style={{ fontSize: 24, color: "#000" }}
+                                            style={{ fontSize: 16, color: "#000" }}
                                             keyboardType={'number-pad'}
                                             maxLength={1}
                                             onChangeText={(txt) => handleEnteredOtp(txt)}
@@ -282,6 +283,7 @@ const styles = StyleSheet.create({
         elevation: 2,
         height: height * 0.64,
         width: width * 0.92,
+        justifyContent: 'space-evenly',
     },
 
     lowerContainer: {
@@ -355,22 +357,22 @@ const styles = StyleSheet.create({
 
     otpMainContainer: {
         display: 'flex',
-        justifyContent: 'space-evenly',
+        justifyContent: 'space-between',
         flexDirection: 'row',
+        marginTop: 12,
     },
 
     otpContainer: {
-        width: width * 0.1,
+        width: 42,
         borderWidth: 0.8,
         borderColor: '#000',
         padding: 10,
-        marginTop: 24,
         display: 'flex',
         flexDirection: 'row',
-        marginBottom: 6,
-        marginLeft: 12,
-        height: height * 0.07,
-        backgroundColor: '#fff',
+        height: 42,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 6,
     },
 });
 
