@@ -172,7 +172,7 @@ const RootNavigator = () => {
             name="FinalBooking"
             component={FinalBooking}
             options={{
-              header: AppHeader,
+              headerShown: false,
             }}
           />
         </Stack.Navigator>

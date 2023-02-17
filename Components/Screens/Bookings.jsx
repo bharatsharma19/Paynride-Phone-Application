@@ -2,10 +2,13 @@ import { FlatList, Image, SafeAreaView, StyleSheet, Text, View, Dimensions } fro
 import { React, useState, useEffect } from 'react'
 import { postData, ServerURL } from '../Services/FetchNodeServices'
 import AppButton from '../UiComponents/Common/Button'
+import { useDispatch } from "react-redux";
 
 const { width } = Dimensions.get('window')
 
-const Bookings = () => {
+const Bookings = ({ navigation }) => {
+    var dispatch = useDispatch()
+
     const [availableCars, setAvailableCars] = useState([])
 
     const fetchAvailableCars = async () => {
@@ -20,6 +23,13 @@ const Bookings = () => {
     }, [])
 
     const RenderItem = ({ item }) => {
+        const handleVehicle = (selectedItem) => {
+
+            dispatch({ type: "ADD_VEHICLE", payload: [selectedItem.vehicleid, selectedItem] })
+
+            navigation.navigate("FinalBooking")
+        }
+
         return (
             <>
                 <View style={styles.mainRenderItem}>
@@ -80,7 +90,7 @@ const Bookings = () => {
                         </View>
                         <View style={{ alignItems: 'center', }}>
                             {item.vehiclebookingstatus === 'Not Booked' ? <>
-                                <AppButton buttonText={"Proceed"} borderRadius={24} btnWidth={'0.32'} margintop={0} marginleft={0} marginright={0} pd={0} />
+                                <AppButton buttonText={"Proceed"} borderRadius={24} btnWidth={'0.32'} margintop={0} marginleft={0} marginright={0} pd={0} onPress={() => handleVehicle(item)} />
                             </> : <>
                                 <Text style={{ color: "red", fontFamily: "Poppins", fontSize: 24, fontWeight: 800, marginTop: 12, }}>
                                     Sold Out!
