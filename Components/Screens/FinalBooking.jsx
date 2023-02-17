@@ -31,7 +31,9 @@ const FinalBooking = () => {
         <>
             <ScrollView>
                 <View style={styles.mainContainer}>
-
+                    <Text style={styles.mainStyleText}>
+                        Booking Summary
+                    </Text>
                     <View style={{ marginTop: 10 }}>
                         <Text style={styles.companyText}>
                             {item.companyname} {item.modelname}
@@ -84,17 +86,43 @@ const FinalBooking = () => {
 
                     <View style={styles.subContainer}>
 
-                        <View style={{ width: width * (0.6), flexDirection: 'row' }}>
-                            <View style={{ flexDirection: "column" }}>
-                                <View style={{ flexDirection: 'column' }}>
-                                    <Text style={styles.basicInfo}>
-                                        Pricing Plan: Doesn't Include fuel
-                                    </Text>
-                                    <Text style={styles.basicInfo}>
-                                        Tolls: To be paid by you
-                                    </Text>
+                        <View style={{ width: width * (0.6) }}>
+                            <>
+                                <View style={{ display: 'flex', justifyContent: 'space-between', }}>
+                                    <View style={styles.basicInfoMain}>
+                                        <Text style={styles.basicInfoHeading}>
+                                            Fuel: {'  '}
+                                        </Text>
+                                        <Text style={styles.basicInfoText}>
+                                            Not Included
+                                        </Text>
+                                    </View>
+                                    <View style={styles.basicInfoMain}>
+                                        <Text style={styles.basicInfoHeading}>
+                                            Tolls:{'  '}
+                                        </Text>
+                                        <Text style={styles.basicInfoText}>
+                                            To be paid by you
+                                        </Text>
+                                    </View>
+                                    <View style={styles.basicInfoMain}>
+                                        <Text style={styles.basicInfoHeading}>
+                                            Kms Limit: {'  '}
+                                        </Text>
+                                        <Text style={styles.basicInfoText}>
+                                            Unlimited
+                                        </Text>
+                                    </View>
+                                    <View style={styles.basicInfoMain}>
+                                        <Text style={styles.basicInfoHeading}>
+                                            Extra kms charge: {'  '}
+                                        </Text>
+                                        <Text style={styles.basicInfoText}>
+                                            &#8377; 0
+                                        </Text>
+                                    </View>
                                 </View>
-                            </View>
+                            </>
                         </View>
                     </View>
 
@@ -245,9 +273,10 @@ const styles = StyleSheet.create({
 
     companyText: {
         fontFamily: "Poppins",
-        fontSize: 20,
+        fontSize: 24,
         fontWeight: "bold",
-        color: '#000000',
+        color: '#000',
+        justifyContent: 'center',
     },
 
     iconContainer: {
@@ -340,9 +369,20 @@ const styles = StyleSheet.create({
         color: '#000',
     },
 
-    basicInfo: {
+    basicInfoMain: {
+        display: 'flex',
+        flexDirection: 'row',
+    },
+
+    basicInfoHeading: {
         fontFamily: 'Poppins',
         fontWeight: 'bold',
+        color: '#008b8b',
+    },
+
+    basicInfoText: {
+        fontFamily: 'Poppins',
+        fontWeight: 'normal',
         color: '#008b8b',
     },
 
@@ -352,5 +392,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: height * 0.01,
         marginBottom: height * 0.06,
+    },
+
+    mainStyleText: {
+        fontSize: 20,
+        color: '#000',
+        fontWeight: 700,
+        marginTop: 8,
     }
 })
