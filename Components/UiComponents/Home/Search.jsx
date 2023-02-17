@@ -33,7 +33,7 @@ const Search = ({ navigation }) => {
     useEffect(() => {
         fetchAllCities()
     }, []);
-    
+
     const handleSelectedCity = (item) => {
         setCityId(item.cityid)
         setSelectedCity(item.cityname)
@@ -240,12 +240,12 @@ const Search = ({ navigation }) => {
                             </TouchableOpacity>
                         </View>
                     </View>
-                    <View style={{ alignItems: 'center', marginTop: 36, }}>
+                    <View style={{ alignItems: 'center', marginTop: height * 0.064, }}>
                         <Text style={{ color: '#000', fontSize: 16, fontWeight: 'bold' }}>
                             {daysTime}
                         </Text>
                     </View>
-                    <View style={{ marginTop: 12, alignItems: 'center', }}>
+                    <View style={{ marginTop: 4, alignItems: 'center', }}>
                         {handleSearchBtn()}
                     </View>
                 </View>
@@ -257,7 +257,7 @@ const Search = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     mainContainer: {
-        height: height * 0.44,
+        height: height * 0.5,
         width: width * 1,
         justifyContent: 'center',
         alignItems: 'center',
