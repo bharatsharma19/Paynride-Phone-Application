@@ -33,6 +33,7 @@ const Search = ({ navigation }) => {
     useEffect(() => {
         fetchAllCities()
     }, []);
+    
     const handleSelectedCity = (item) => {
         setCityId(item.cityid)
         setSelectedCity(item.cityname)
@@ -105,14 +106,14 @@ const Search = ({ navigation }) => {
     };
 
     const handleSearchBtn = () => {
-        if (startDate === "" || endDate === "" || startDate > endDate || selectedCity === 'Select City') {
+        if (startDate !== "" && endDate !== "" && selectedCity !== 'Select City' && (hours >= 3 || days >= 1)) {
             return (
-                <AppButton btnWidth={0.84} opacity={0.5} buttonText={'Search'} bgColor='#2980b9' borderRadius={24} />
+                <AppButton onPress={handleCitySearch} btnWidth={0.84} buttonText={'Search'} bgColor='#2980b9' borderRadius={24} />
             )
         }
         else {
             return (
-                <AppButton onPress={handleCitySearch} btnWidth={0.84} buttonText={'Search'} bgColor='#2980b9' borderRadius={24} />
+                <AppButton btnWidth={0.84} onPress={handleErrorAlert} opacity={0.5} buttonText={'Search'} bgColor='#2980b9' borderRadius={24} />
             )
         }
     }
@@ -146,6 +147,10 @@ const Search = ({ navigation }) => {
                 setDaysTime("Error")
             }
         }
+    }
+
+    const handleErrorAlert = () => {
+        Alert.alert("Error", "Duration cannot be less than 3 Hours")
     }
 
     const handleCitySearch = () => {
@@ -235,7 +240,12 @@ const Search = ({ navigation }) => {
                             </TouchableOpacity>
                         </View>
                     </View>
-                    <View style={{ marginTop: 44, alignItems: 'center', }}>
+                    <View style={{ alignItems: 'center', marginTop: 36, }}>
+                        <Text style={{ color: '#000', fontSize: 16, fontWeight: 'bold' }}>
+                            {daysTime}
+                        </Text>
+                    </View>
+                    <View style={{ marginTop: 12, alignItems: 'center', }}>
                         {handleSearchBtn()}
                     </View>
                 </View>
