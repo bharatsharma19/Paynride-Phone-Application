@@ -22,7 +22,7 @@ const Bookings = () => {
     const RenderItem = ({ item }) => {
         return (
             <>
-                <View style={{ height: 184, width: width * 0.96, backgroundColor: "#fff", marginTop: 8, borderRadius: 14, padding: 12, display: 'flex', flexDirection: 'row', marginBottom: 16, }}>
+                <View style={styles.mainRenderItem}>
                     <View style={{ flex: 0.54, marginRight: width * 0.112, }}>
                         <View>
                             <Text style={{ fontSize: 20, fontWeight: '500', color: "#95a5a6", letterSpacing: 1.02, }}>
@@ -71,7 +71,7 @@ const Bookings = () => {
                         </View>
                     </View>
 
-                    <View style={{ flex: 0.46, display: 'flex', justifyContent: 'center', alignItems: 'center', alignContent: 'center', marginTop: -36, }}>
+                    <View style={styles.renderItemImage}>
                         <View>
                             <Image style={{ resizeMode: 'contain', width: 164, height: 112, }}
                                 source={{
@@ -111,5 +111,26 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#f2f2f2',
         alignItems: 'center',
+    },
+
+    mainRenderItem: {
+        height: 184,
+        width: width * 0.96,
+        backgroundColor: "#fff",
+        marginTop: 8,
+        borderRadius: 14,
+        padding: 12,
+        display: 'flex',
+        flexDirection: 'row',
+        marginBottom: 16,
+    },
+
+    renderItemImage: {
+        flex: 0.46,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignContent: 'center',
+        marginTop: -36,
     },
 })

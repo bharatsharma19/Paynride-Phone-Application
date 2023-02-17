@@ -127,12 +127,15 @@ const Login = ({ navigation }) => {
                     <View style={styles.centeredView}>
                         <View style={styles.modalView}>
 
-                            <Text style={{ fontSize: 24, fontWeight: 700, color: "#000", }}>
-                                Verification
-                            </Text>
-                            <Text style={{ fontSize: 16, fontWeight: 500, color: "#353b48", }}>
-                                A 6-Digit Otp has been sent to your mobile number. Enter it below to Continue...
-                            </Text>
+                            <View style={{ height: height * 0.06, }}>
+                                <Text style={{ fontSize: 24, fontWeight: 700, color: "#000", }}>
+                                    Verification
+                                </Text>
+                                <Text style={{ fontSize: 16, fontWeight: 500, color: "#353b48", }}>
+                                    A 6-Digit Otp has been sent to your mobile number. Enter it below to Continue...
+                                </Text>
+                            </View>
+
                             <View style={styles.innerContainer}>
 
                                 <View style={styles.otpMainContainer}>
@@ -189,7 +192,7 @@ const Login = ({ navigation }) => {
 
                                 </View>
 
-                                <View style={{ marginTop: 24, }}>
+                                <View style={{ marginTop: height * 0.006, }}>
                                     <AppButton onPress={handleLoginClick} btnWidth={0.72} buttonText={'Continue'} bgColor='#2980b9' borderRadius={24} />
                                 </View>
                             </View>
@@ -205,18 +208,18 @@ const Login = ({ navigation }) => {
             <View style={styles.mainContainer}>
                 <View style={{ opacity: modalVisible ? 0 : 1, }}>
                     <View style={styles.upperContainer}>
-                        <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
+                        <View style={{ alignItems: 'center', height: height * 0.12 }}>
                             <Image
                                 style={{ width: 164, height: 72, resizeMode: 'contain' }}
                                 source={require('../Assets/Rentals1.png')}
                             />
                         </View>
-                        <View>
+                        <View style={{ height: height * 0.12, }}>
                             <Text style={styles.loginTxt}>
                                 Welcome,
                             </Text>
                             <Text style={styles.loginSubTxt}>
-                                Generate Otp
+                                Enter your Mobile Number to Continue...
                             </Text>
                         </View>
                         <View style={styles.subContainer}>
@@ -271,14 +274,15 @@ const styles = StyleSheet.create({
 
     subContainer: {
         display: 'flex',
-        justifyContent: 'center',
+        alignItems: 'center',
         marginLeft: 'auto',
         marginRight: 'auto',
+        height: height * 0.28,
     },
 
     upperContainer: {
         backgroundColor: "#fff",
-        padding: 8,
+        padding: 12,
         borderRadius: 16,
         elevation: 2,
         height: height * 0.64,
@@ -305,8 +309,6 @@ const styles = StyleSheet.create({
     },
 
     loginTxt: {
-        marginTop: 16,
-        paddingVertical: 8,
         color: '#000',
         fontSize: 32,
         fontWeight: 900,
@@ -315,13 +317,11 @@ const styles = StyleSheet.create({
     },
 
     loginSubTxt: {
-        paddingVertical: 8,
         color: '#353b48',
-        fontSize: 20,
-        fontWeight: 500,
+        fontSize: 16,
         fontFamily: 'Poppins',
         marginLeft: 4,
-        marginTop: -8,
+        marginTop: 2,
     },
 
     centeredView: {
@@ -344,22 +344,23 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 5,
-        height: height * 0.42,
+        height: height * 0.32,
         width: width * 0.84,
     },
 
     innerContainer: {
         display: 'flex',
         justifyContent: 'center',
-        marginTop: 12,
         alignItems: 'center',
+        marginTop: height * 0.032,
+        height: height * 0.16,
     },
 
     otpMainContainer: {
         display: 'flex',
         justifyContent: 'space-between',
         flexDirection: 'row',
-        marginTop: 12,
+        marginTop: height * 0.054,
     },
 
     otpContainer: {
