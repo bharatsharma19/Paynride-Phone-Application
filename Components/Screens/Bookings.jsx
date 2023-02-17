@@ -3,16 +3,21 @@ import { React, useState, useEffect } from 'react'
 import { postData, ServerURL } from '../Services/FetchNodeServices'
 import AppButton from '../UiComponents/Common/Button'
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const { width } = Dimensions.get('window')
 
 const Bookings = ({ navigation }) => {
     var dispatch = useDispatch()
 
+    var bookingDetails = useSelector(state => state.booking)
+
     const [availableCars, setAvailableCars] = useState([])
 
     const fetchAvailableCars = async () => {
-        var body = { availabilityCity: 1 }
+        console.log(bookingDetails)
+
+        var body = { availabilityCity: bookingDetails.cityId }
 
         const result = await postData("user/display_all_vehicles", body)
 
@@ -23,7 +28,10 @@ const Bookings = ({ navigation }) => {
     }, [])
 
     const RenderItem = ({ item }) => {
+        let totalBaseRent = item.rentperhour * ((bookingDetails.days * 24) + (bookingDetails.hours))
+
         const handleVehicle = (selectedItem) => {
+            selectedItem['baseFare'] = totalBaseRent
 
             dispatch({ type: "ADD_VEHICLE", payload: [selectedItem.vehicleid, selectedItem] })
 
@@ -70,7 +78,7 @@ const Bookings = ({ navigation }) => {
                         <View style={{ marginTop: 16, }}>
                             <View>
                                 <Text style={{ color: "#000", fontSize: 24, fontWeight: 500, }}>
-                                    {'\u20B9'} {item.rentperhour}
+                                    {'\u20B9'} {totalBaseRent}
                                 </Text>
                             </View>
                             <View>

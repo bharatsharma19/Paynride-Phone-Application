@@ -16,12 +16,12 @@ const { width, height } = Dimensions.get('window');
 
 const FinalBooking = () => {
 
-    const [deliveryLoc, setDeliveryLoc] = useState("PaynRide")
-
     var vehicle = useSelector(state => state.vehicle)
     var item = Object.values(vehicle)[0]
 
     var bookingDetails = useSelector(state => state.booking)
+
+    const [deliveryLoc, setDeliveryLoc] = useState(`PaynRide ${bookingDetails.cityName}`)
 
     const handleProceedClick = () => {
         console.warn("Proceed Button Clicked")
@@ -79,7 +79,7 @@ const FinalBooking = () => {
                     <View style={styles.carImage}>
                         <Image source={{ uri: (`${ServerURL}/images/${item.vehicleicon}`) }} style={{
                             resizeMode: 'contain',
-                            height: height * (0.16),
+                            height: height * (0.18),
                             width: width * (0.9),
                         }} />
                     </View>
@@ -135,39 +135,22 @@ const FinalBooking = () => {
 
                         <View style={styles.lowerSubContainer}>
 
-                            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000000' }}>
-                                Date
+                            <Text style={styles.startDateEndDate}>
+                                {bookingDetails.startDate}
                             </Text>
 
-                            <View style={{
-                                borderBottomWidth: 2,
-                                borderBottomColor: '#a9a9a9',
-                                borderStyle: 'dotted',
-                                width: 100,
-                                height: 0
-                            }} />
-
-                            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000000' }}>
-                                Date
+                            <Text style={{ marginLeft: 8, marginRight: 8, fontSize: 14, color: '#000', }}>
+                                {'-'}TO{'-'}
                             </Text>
 
+                            <Text style={styles.startDateEndDate}>
+                                {bookingDetails.endDate}
+                            </Text>
                         </View>
-
-                        <View style={styles.lowerSubContainer}>
-
-                            <Text style={{ fontWeight: 'bold' }}>
-                                Date
-                            </Text>
-                            <Text style={{ fontWeight: 'bold' }} >
-                                Date
-                            </Text>
-
-                        </View>
-
                     </View>
 
                     <View style={styles.locationContainer}>
-                        <Input iconName="location-enter" placeholder="Delivery Location" keyboardType="default" onChangeText={(txt) => setDeliveryLoc(txt)} />
+                        <Input iconName="location-enter" placeholder="Delivery Location" keyboardType="default" defaultValue={deliveryLoc} onChangeText={(txt) => setDeliveryLoc(txt)} />
                     </View>
 
                     <View style={styles.anotherLowerContainer}>
@@ -301,7 +284,9 @@ const styles = StyleSheet.create({
 
     carImage: {
         width: width * (0.9),
-        height: height * (0.16),
+        height: height * (0.18),
+        marginTop: 8,
+        marginBottom: 0,
     },
 
     subContainer: {
@@ -325,7 +310,7 @@ const styles = StyleSheet.create({
     },
 
     lowerSubContainer: {
-        margin: 5,
+        marginTop: 10,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-evenly',
@@ -399,5 +384,12 @@ const styles = StyleSheet.create({
         color: '#000',
         fontWeight: 700,
         marginTop: 8,
-    }
+    },
+
+    startDateEndDate: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#000',
+        marginRight: -4,
+    },
 })

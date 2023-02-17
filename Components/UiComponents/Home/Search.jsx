@@ -6,10 +6,13 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import AppButton from '../Common/Button';
 import moment from 'moment';
 import { getData } from '../../Services/FetchNodeServices';
+import { useDispatch } from 'react-redux';
 
 const { width, height } = Dimensions.get('window')
 
 const Search = ({ navigation }) => {
+
+    var dispatch = useDispatch()
 
     const [cities, setCities] = useState([])
     const [cityId, setCityId] = useState("")
@@ -95,11 +98,13 @@ const Search = ({ navigation }) => {
         hideEndDatePicker()
     };
 
+    const calculateDiff = () => { 
+        let tempStartDate = startDate
+    }
+
     const handleCitySearch = () => {
-        //alert("Search Button Clicked!")
-        /*
-        console.log({ city: selectedCity, startDate: startDate, endDate: endDate, cityid: cityId, duration: daysTime, days: days, hours: hours })
-        */
+        dispatch({ type: "ADD_BOOKING", payload: { cityId: cityId, cityName: selectedCity, startDate: startDate, endDate: endDate, duration: daysTime, days: days, hours: hours } })
+
         navigation.navigate("AvailableCars")
     }
 
