@@ -165,14 +165,14 @@ const RootNavigator = () => {
             name="AvailableCars"
             component={Bookings}
             options={{
-              header: AppHeader,
+              headerShown: AppHeader,
             }}
           />
           <Stack.Screen
             name="FinalBooking"
             component={FinalBooking}
             options={{
-              headerShown: false,
+              headerShown: AppHeader,
             }}
           />
         </Stack.Navigator>

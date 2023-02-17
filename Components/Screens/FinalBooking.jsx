@@ -69,10 +69,10 @@ const FinalBooking = () => {
                             <Image source={require('../Assets/automatic.png')} style={{
                                 resizeMode: 'contain',
                                 height: 14,
-                                width: 14
-
+                                width: 14,
+                                marginTop: 3,
                             }} />
-                            <Text style={{ fontFamily: "Poppins", fontWeight: 'bold', }}>
+                            <Text style={styles.iconText}>
                                 {item.transmission}
                             </Text>
                         </View>
@@ -81,9 +81,10 @@ const FinalBooking = () => {
                             <Image source={require('../Assets/seat.png')} style={{
                                 resizeMode: 'contain',
                                 height: 14,
-                                width: 14
+                                width: 14,
+                                marginTop: 3,
                             }} />
-                            <Text style={{ fontFamily: "Poppins", fontWeight: 'bold', }}>
+                            <Text style={styles.iconText}>
                                 {item.capacity} Seats
                             </Text>
                         </View>
@@ -140,21 +141,43 @@ const FinalBooking = () => {
                     </View>
 
                     <View style={styles.lowerContainer}>
-                        <View style={{ alignItems: 'center', width: width * (0.8) }}>
-                            <Text style={{ color: '#000', }} >
-                                {'Duration : '} {bookingDetails.days} Days {bookingDetails.hours} Hours
-                            </Text>
-                        </View>
-
                         <View style={styles.lowerSubContainer}>
 
-                            <Text style={styles.startDateEndDate}>
-                                {'Start Date : '} {bookingDetails.startDate}
-                            </Text>
+                            <View style={styles.textBasicContainer}>
+                                <Text style={styles.startDateEndDate}>
+                                    {'City : '}
+                                </Text>
+                                <Text style={styles.startDateEndDateSub}>
+                                    {' '}{bookingDetails.cityName}
+                                </Text>
+                            </View>
 
-                            <Text style={styles.startDateEndDate}>
-                                {'End Date : '} {bookingDetails.endDate}
-                            </Text>
+                            <View style={styles.textBasicContainer}>
+                                <Text style={styles.startDateEndDate}>
+                                    {'Duration : '}
+                                </Text>
+                                <Text style={styles.startDateEndDateSub}>
+                                    {' '}{bookingDetails.days} Days {bookingDetails.hours} Hours
+                                </Text>
+                            </View>
+
+                            <View style={styles.textBasicContainer}>
+                                <Text style={styles.startDateEndDate}>
+                                    {'Start Date : '}
+                                </Text>
+                                <Text style={styles.startDateEndDateSub}>
+                                    {' '}{bookingDetails.startDate}
+                                </Text>
+                            </View>
+
+                            <View style={styles.textBasicContainer}>
+                                <Text style={styles.startDateEndDate}>
+                                    {'End Date : '}
+                                </Text>
+                                <Text style={styles.startDateEndDateSub}>
+                                    {' '}{bookingDetails.endDate}
+                                </Text>
+                            </View>
                         </View>
                     </View>
 
@@ -168,7 +191,7 @@ const FinalBooking = () => {
                             <Text style={styles.priceDetailsText}>
                                 Base Fare
                             </Text>
-                            <Text style={styles.priceDetailsText}>
+                            <Text style={styles.priceDetailsTextSub}>
                                 &#8377; {baseFare}
                             </Text>
                         </View>
@@ -185,7 +208,7 @@ const FinalBooking = () => {
                             <Text style={styles.priceDetailsText}>
                                 Doorstep Delivery & Pickup
                             </Text>
-                            <Text style={styles.priceDetailsText}>
+                            <Text style={styles.priceDetailsTextSub}>
                                 &#8377; {doorstepDelivery}
                             </Text>
                         </View>
@@ -219,7 +242,7 @@ const FinalBooking = () => {
                             <Text style={styles.priceDetailsText}>
                                 Remaining Payment
                             </Text>
-                            <Text style={styles.priceDetailsText}>
+                            <Text style={styles.priceDetailsTextSub}>
                                 &#8377; {remainingAmount}
                             </Text>
                         </View>
@@ -289,6 +312,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Poppins',
         fontWeight: 'bold',
         alignItems: 'flex-start',
+        color: '#000',
     },
 
     carImage: {
@@ -320,7 +344,6 @@ const styles = StyleSheet.create({
     },
 
     lowerSubContainer: {
-        marginTop: 10,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -355,6 +378,13 @@ const styles = StyleSheet.create({
         fontFamily: 'Poppins',
         fontSize: 18,
         fontWeight: 'bold',
+        color: '#000',
+    },
+
+    priceDetailsTextSub: {
+        fontFamily: 'Poppins',
+        fontSize: 18,
+        color: '#000',
     },
 
     totalPriceText: {
@@ -402,4 +432,15 @@ const styles = StyleSheet.create({
         color: '#000',
         marginRight: -4,
     },
+
+    startDateEndDateSub: {
+        fontSize: 16,
+        color: '#000',
+        marginRight: -4,
+    },
+
+    textBasicContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+    }
 })

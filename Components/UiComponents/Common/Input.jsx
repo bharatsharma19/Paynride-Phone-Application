@@ -22,6 +22,7 @@ export default function Input({ keyboardType, placeholder, error, iconName, setV
                     keyboardType={keyboardType}
                     placeholderTextColor="#000"
                     value={defaultValue ? defaultValue : ''}
+                    editable={true}
                 />
             </View>
             {error ? <Text style={{ fontSize: 12, fontWeight: 700, color: 'red' }}>{error}</Text> : <></>}
