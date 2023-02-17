@@ -76,8 +76,7 @@ const Login = ({ navigation }) => {
     const handleLoginClick = async () => {
         let tempOtp = await parseInt(enteredOtp)
 
-        console.log(enteredOtp)
-        console.log(tempOtp)
+        console.log(enteredOtp + " === " + tempOtp)
 
         if (generatedOtp === tempOtp) {
             setModalVisible(false)

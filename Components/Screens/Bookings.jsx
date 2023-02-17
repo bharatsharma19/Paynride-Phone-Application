@@ -15,7 +15,7 @@ const Bookings = ({ navigation }) => {
     const [availableCars, setAvailableCars] = useState([])
 
     const fetchAvailableCars = async () => {
-        console.log(bookingDetails)
+        //console.log(bookingDetails)
 
         var body = { availabilityCity: bookingDetails.cityId }
 
