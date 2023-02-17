@@ -104,12 +104,25 @@ const Search = ({ navigation }) => {
         dateDiff(tempStartDate, date);
     };
 
+    const handleSearchBtn = () => {
+        if (startDate === "" || endDate === "" || startDate > endDate || selectedCity === 'Select City') {
+            return (
+                <AppButton btnWidth={0.84} opacity={0.5} buttonText={'Search'} bgColor='#2980b9' borderRadius={24} />
+            )
+        }
+        else {
+            return (
+                <AppButton onPress={handleCitySearch} btnWidth={0.84} buttonText={'Search'} bgColor='#2980b9' borderRadius={24} />
+            )
+        }
+    }
+
     const dateDiff = (sD, eD) => {
         var startDay = new Date(sD)
         var endDay = new Date(eD)
 
-        console.log(startDay)
-        console.log(endDay)
+        //console.log(startDay)
+        //console.log(endDay)
 
         if (endDay < startDay) {
             setDaysTime("End Date should be more than Start Date")
@@ -223,7 +236,7 @@ const Search = ({ navigation }) => {
                         </View>
                     </View>
                     <View style={{ marginTop: 44, alignItems: 'center', }}>
-                        <AppButton onPress={handleCitySearch} btnWidth={0.84} buttonText={'Search'} bgColor='#2980b9' borderRadius={24} />
+                        {handleSearchBtn()}
                     </View>
                 </View>
             </View>
