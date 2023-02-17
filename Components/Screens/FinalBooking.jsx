@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import {
     Text,
     View,
@@ -22,6 +22,19 @@ const FinalBooking = () => {
     var bookingDetails = useSelector(state => state.booking)
 
     const [deliveryLoc, setDeliveryLoc] = useState(`PaynRide ${bookingDetails.cityName}`)
+    const [baseFare] = useState(item.baseFare)
+    const [doorstepDelivery] = useState(400)
+    const [total, setTotal] = useState("")
+
+    const calculateTotal = () => {
+        setTotal(parseInt(baseFare + parseInt(doorstepDelivery)))
+    }
+    useEffect(function () {
+        calculateTotal()
+    }, [])
+
+    var advancePayment = parseInt((3 / 4) * total);
+    let remainingAmount = parseInt(total - advancePayment)
 
     const handleProceedClick = () => {
         console.warn("Proceed Button Clicked")
@@ -128,23 +141,19 @@ const FinalBooking = () => {
 
                     <View style={styles.lowerContainer}>
                         <View style={{ alignItems: 'center', width: width * (0.8) }}>
-                            <Text style={{ fontWeight: 'bold' }} >
-                                {bookingDetails.days} Days {bookingDetails.hours} Hours
+                            <Text style={{ color: '#000', }} >
+                                {'Duration : '} {bookingDetails.days} Days {bookingDetails.hours} Hours
                             </Text>
                         </View>
 
                         <View style={styles.lowerSubContainer}>
 
                             <Text style={styles.startDateEndDate}>
-                                {bookingDetails.startDate}
-                            </Text>
-
-                            <Text style={{ marginLeft: 8, marginRight: 8, fontSize: 14, color: '#000', }}>
-                                {'-'}TO{'-'}
+                                {'Start Date : '} {bookingDetails.startDate}
                             </Text>
 
                             <Text style={styles.startDateEndDate}>
-                                {bookingDetails.endDate}
+                                {'End Date : '} {bookingDetails.endDate}
                             </Text>
                         </View>
                     </View>
@@ -160,7 +169,7 @@ const FinalBooking = () => {
                                 Base Fare
                             </Text>
                             <Text style={styles.priceDetailsText}>
-                                &#8377; {item.rentperhour}
+                                &#8377; {baseFare}
                             </Text>
                         </View>
 
@@ -177,7 +186,7 @@ const FinalBooking = () => {
                                 Doorstep Delivery & Pickup
                             </Text>
                             <Text style={styles.priceDetailsText}>
-                                &#8377; 400
+                                &#8377; {doorstepDelivery}
                             </Text>
                         </View>
 
@@ -194,7 +203,7 @@ const FinalBooking = () => {
                                 Advance Payment
                             </Text>
                             <Text style={styles.priceDetailsText}>
-                                &#8377; 400
+                                &#8377; {advancePayment}
                             </Text>
                         </View>
 
@@ -211,7 +220,7 @@ const FinalBooking = () => {
                                 Remaining Payment
                             </Text>
                             <Text style={styles.priceDetailsText}>
-                                &#8377; 1000
+                                &#8377; {remainingAmount}
                             </Text>
                         </View>
 
@@ -228,7 +237,7 @@ const FinalBooking = () => {
                                 Total
                             </Text>
                             <Text style={styles.totalPriceText}>
-                                &#8377; 23500
+                                &#8377; {total}
                             </Text>
                         </View>
 
@@ -307,13 +316,14 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         padding: 10,
         elevation: 10,
+        alignItems: 'center',
     },
 
     lowerSubContainer: {
         marginTop: 10,
-        flexDirection: 'row',
+        display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-evenly',
+        justifyContent: 'center',
     },
 
     locationContainer: {

@@ -7,6 +7,7 @@ import AppButton from '../Common/Button';
 import moment from 'moment';
 import { getData } from '../../Services/FetchNodeServices';
 import { useDispatch } from 'react-redux';
+import DateDiff from 'date-diff';
 
 const { width, height } = Dimensions.get('window')
 
@@ -88,18 +89,50 @@ const Search = ({ navigation }) => {
         setEndDatePickerVisibility(false);
     };
 
+    const [tempStartDate, setTempStartDate] = useState('')
+
     const handleStartDateConfirm = (date) => {
+        setTempStartDate(date);
         setStartDate(moment(date).format('DD-MM-YYYY hh:mm A'));
-        hideStartDatePicker()
-        setEndDatePickerVisibility(true)
+        hideStartDatePicker();
+        setEndDatePickerVisibility(true);
     };
     const handleEndDateConfirm = (date) => {
-        setEndDate(moment(date).format('DD-MM-YYYY hh:mm A'))
-        hideEndDatePicker()
+        //console.log(date)
+        setEndDate(moment(date).format('DD-MM-YYYY hh:mm A'));
+        hideEndDatePicker();
+        dateDiff(tempStartDate, date);
     };
 
-    const calculateDiff = () => { 
-        let tempStartDate = startDate
+    const dateDiff = (sD, eD) => {
+        var startDay = new Date(sD)
+        var endDay = new Date(eD)
+
+        console.log(startDay)
+        console.log(endDay)
+
+        if (endDay < startDay) {
+            setDaysTime("End Date should be more than Start Date")
+        }
+        else {
+            if (startDay === null || startDate === "") {
+                setDaysTime("Select Start Date & Time!")
+            }
+            else if (endDay === null || endDate === "") {
+                setDaysTime("Select End Date & Time!")
+            }
+            else if (startDay !== null && endDay !== null) {
+                var diff = new DateDiff(endDay, startDay)
+                var calculated = "Duration : " + parseInt(diff.days()) + " Days " + Math.ceil(diff.hours() % 24) + " Hours"
+
+                setDays(parseInt(diff.days()))
+                setHours(Math.ceil(diff.hours() % 24))
+                setDaysTime(calculated)
+            }
+            else {
+                setDaysTime("Error")
+            }
+        }
     }
 
     const handleCitySearch = () => {
