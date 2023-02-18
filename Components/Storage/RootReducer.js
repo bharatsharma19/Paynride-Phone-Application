@@ -16,7 +16,7 @@ export default function RootReducer(state = initialState, actions) {
       };
 
     case 'ADD_USER':
-      console.log('ADD USER:', actions);
+      //console.log('ADD USER:', actions);
       state.userDetails[actions.payload[0]] = actions.payload[1];
 
       return {
@@ -26,7 +26,7 @@ export default function RootReducer(state = initialState, actions) {
       };
 
     case 'ADD_VEHICLE':
-      console.log('ADD VEHICLE:', actions);
+      //console.log('ADD VEHICLE:', actions);
       state.vehicle[actions.payload[0]] = actions.payload[1];
 
       return {
