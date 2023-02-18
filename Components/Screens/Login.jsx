@@ -136,12 +136,11 @@ const Login = ({ navigation }) => {
                             </View>
 
                             <View style={styles.innerContainer}>
-
                                 <View style={styles.otpMainContainer}>
-
                                     <View style={styles.otpContainer}>
                                         <TextInput
-                                            style={{ fontSize: 16, color: "#000" }}
+                                            textAlign='center'
+                                            style={styles.otpTextInput}
                                             keyboardType={'number-pad'}
                                             maxLength={1} onChangeText={(txt) => setValueOne(txt)}
                                             value={valueOne}
@@ -149,7 +148,8 @@ const Login = ({ navigation }) => {
                                     </View>
                                     <View style={styles.otpContainer}>
                                         <TextInput
-                                            style={{ fontSize: 16, color: "#000" }}
+                                            textAlign='center'
+                                            style={styles.otpTextInput}
                                             keyboardType={'number-pad'}
                                             maxLength={1} onChangeText={(txt) => setValueTwo(txt)}
                                             value={valueTwo}
@@ -157,7 +157,8 @@ const Login = ({ navigation }) => {
                                     </View>
                                     <View style={styles.otpContainer}>
                                         <TextInput
-                                            style={{ fontSize: 16, color: "#000" }}
+                                            textAlign='center'
+                                            style={styles.otpTextInput}
                                             keyboardType={'number-pad'}
                                             maxLength={1} onChangeText={(txt) => setValueThree(txt)}
                                             value={valueThree}
@@ -165,7 +166,8 @@ const Login = ({ navigation }) => {
                                     </View>
                                     <View style={styles.otpContainer}>
                                         <TextInput
-                                            style={{ fontSize: 16, color: "#000" }}
+                                            textAlign='center'
+                                            style={styles.otpTextInput}
                                             keyboardType={'number-pad'}
                                             maxLength={1} onChangeText={(txt) => setValueFour(txt)}
                                             value={valueFour}
@@ -173,7 +175,8 @@ const Login = ({ navigation }) => {
                                     </View>
                                     <View style={styles.otpContainer}>
                                         <TextInput
-                                            style={{ fontSize: 16, color: "#000" }}
+                                            textAlign='center'
+                                            style={styles.otpTextInput}
                                             keyboardType={'number-pad'}
                                             maxLength={1} onChangeText={(txt) => setValueFive(txt)}
                                             value={valueFive}
@@ -181,20 +184,21 @@ const Login = ({ navigation }) => {
                                     </View>
                                     <View style={styles.otpContainer}>
                                         <TextInput
-                                            style={{ fontSize: 16, color: "#000" }}
+                                            textAlign='center'
+                                            style={styles.otpTextInput}
                                             keyboardType={'number-pad'}
                                             maxLength={1}
                                             onChangeText={(txt) => handleEnteredOtp(txt)}
                                             value={valueSix}
                                         />
                                     </View>
-
                                 </View>
 
-                                <View style={{ marginTop: height * 0.006, }}>
+                                <View style={{ marginTop: height * 0.01, }}>
                                     <AppButton onPress={handleLoginClick} btnWidth={0.72} buttonText={'Continue'} bgColor='#2980b9' borderRadius={24} />
                                 </View>
                             </View>
+
                         </View>
                     </View>
                 </Modal>
@@ -343,15 +347,15 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 5,
-        height: height * 0.32,
-        width: width * 0.84,
+        height: height * 0.36,
+        width: width * 0.92,
     },
 
     innerContainer: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: height * 0.032,
+        marginTop: height * 0.036,
         height: height * 0.16,
     },
 
@@ -359,20 +363,27 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'space-between',
         flexDirection: 'row',
-        marginTop: height * 0.054,
+        marginTop: height * 0.072,
+        backgroundColor: '#fff',
     },
 
     otpContainer: {
-        width: 42,
+        width: 54,
         borderWidth: 0.8,
         borderColor: '#000',
-        padding: 10,
         display: 'flex',
         flexDirection: 'row',
-        height: 42,
+        height: 54,
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 6,
+        margin: 3,
+        backgroundColor: '#fff',
+    },
+
+    otpTextInput: {
+        fontSize: 24,
+        color: "#000",
+        fontWeight: 'bold',
     },
 });
 
