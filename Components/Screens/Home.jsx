@@ -36,7 +36,7 @@ const HomePage = ({ navigation }) => {
                         <View style={{ marginTop: 4, }}>
                             <Investors />
                         </View>
-                        <View style={{ marginTop: 4, }}>
+                        <View style={{ marginTop: 4, marginBottom: 8, }}>
                             <Faq />
                         </View>
                     </View>

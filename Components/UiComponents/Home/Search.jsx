@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react'
 import { View, Text, Dimensions, StyleSheet, Image, Alert, Modal, Pressable, FlatList } from 'react-native'
-import Icon from "react-native-vector-icons/MaterialCommunityIcons"
+import Icon from "react-native-vector-icons/Ionicons"
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AppButton from '../Common/Button';
@@ -189,10 +189,10 @@ const Search = ({ navigation }) => {
                             <View style={{
                                 width: width * 0.92, backgroundColor: '#fff', borderRadius: 32, borderWidth: 0.5, borderColor: '#3498db', padding: 8, marginTop: 18, display: 'flex', flexDirection: 'row', alignItems: 'center',
                             }}>
-                                <Icon name="location-enter" style={{ fontSize: 36, color: "#000", }} />
+                                <Icon name="ios-location-outline" style={{ fontSize: 32, color: "#000", marginLeft: 8, }} />
                                 <Text
                                     style={{
-                                        backgroundColor: "#fff", fontSize: 30, marginLeft: 12, fontWeight: 'bold', color: "#000", marginTop: -1,
+                                        backgroundColor: "#fff", fontSize: 30, marginLeft: 18, fontWeight: 'bold', color: "#000", marginTop: -1,
                                     }}
                                 >{selectedCity}</Text>
                             </View>

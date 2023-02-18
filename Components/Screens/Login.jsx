@@ -277,7 +277,7 @@ const Login = ({ navigation }) => {
                         <View style={styles.subContainer}>
                             <View>
                                 <Input iconName="phone" placeholder="Mobile Number" keyboardType="numeric" defaultValue={inputs.mobileEmail} error={error.mobileEmail} onFocus={() => handleErrors(null, "mobileEmail")} onChangeText={(txt) => handleValues(txt, 'mobileEmail')} />
-                                
+
                                 <AppButton onPress={handleOtpClick} btnWidth={0.78} buttonText={'Get Otp'} bgColor='#2980b9' borderRadius={24} />
                             </View>
                         </View>
