@@ -132,7 +132,6 @@ const Login = ({ navigation }) => {
                     }} >
                     <View style={styles.centeredView}>
                         <View style={styles.modalView}>
-
                             <View style={{ height: height * 0.06, }}>
                                 <Text style={{ fontSize: 24, fontWeight: 700, color: "#000", }}>
                                     Verification
@@ -141,7 +140,6 @@ const Login = ({ navigation }) => {
                                     A 6-Digit Otp has been sent to your mobile number. Enter it below to Continue...
                                 </Text>
                             </View>
-
                             <View style={styles.innerContainer}>
                                 <View style={styles.otpMainContainer}>
                                     <View style={styles.otpContainer}>
@@ -246,12 +244,10 @@ const Login = ({ navigation }) => {
                                         />
                                     </View>
                                 </View>
-
                                 <View style={{ marginTop: height * 0.01, }}>
                                     <AppButton onPress={handleLoginClick} btnWidth={0.72} buttonText={'Continue'} bgColor='#2980b9' borderRadius={24} />
                                 </View>
                             </View>
-
                         </View>
                     </View>
                 </Modal>
@@ -281,7 +277,7 @@ const Login = ({ navigation }) => {
                         <View style={styles.subContainer}>
                             <View>
                                 <Input iconName="phone" placeholder="Mobile Number" keyboardType="numeric" defaultValue={inputs.mobileEmail} error={error.mobileEmail} onFocus={() => handleErrors(null, "mobileEmail")} onChangeText={(txt) => handleValues(txt, 'mobileEmail')} />
-
+                                
                                 <AppButton onPress={handleOtpClick} btnWidth={0.78} buttonText={'Get Otp'} bgColor='#2980b9' borderRadius={24} />
                             </View>
                         </View>
