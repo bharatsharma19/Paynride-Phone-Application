@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useRef } from 'react';
 import {
     StyleSheet,
     View,
@@ -39,6 +39,13 @@ const Login = ({ navigation }) => {
     var [valueFour, setValueFour] = useState("")
     var [valueFive, setValueFive] = useState("")
     var [valueSix, setValueSix] = useState("")
+
+    const valueOneRef = useRef(null)
+    const valueTwoRef = useRef(null)
+    const valueThreeRef = useRef(null)
+    const valueFourRef = useRef(null)
+    const valueFiveRef = useRef(null)
+    const valueSixRef = useRef(null)
 
     const [generatedOtp, setGeneratedOtp] = useState("")
     const [enteredOtp, setEnteredOtp] = useState("")
@@ -139,51 +146,97 @@ const Login = ({ navigation }) => {
                                 <View style={styles.otpMainContainer}>
                                     <View style={styles.otpContainer}>
                                         <TextInput
+                                            ref={valueOneRef}
                                             textAlign='center'
                                             style={styles.otpTextInput}
                                             keyboardType={'number-pad'}
-                                            maxLength={1} onChangeText={(txt) => setValueOne(txt)}
+                                            maxLength={1}
+                                            onChangeText={
+                                                (txt) => {
+                                                    setValueOne(txt);
+                                                    if (valueOne !== null) {
+                                                        valueTwoRef.current.focus()
+                                                    }
+                                                }
+                                            }
                                             value={valueOne}
                                         />
                                     </View>
                                     <View style={styles.otpContainer}>
                                         <TextInput
+                                            ref={valueTwoRef}
                                             textAlign='center'
                                             style={styles.otpTextInput}
                                             keyboardType={'number-pad'}
-                                            maxLength={1} onChangeText={(txt) => setValueTwo(txt)}
+                                            maxLength={1}
+                                            onChangeText={
+                                                (txt) => {
+                                                    setValueTwo(txt);
+                                                    if (valueTwo !== null) {
+                                                        valueThreeRef.current.focus()
+                                                    }
+                                                }
+                                            }
                                             value={valueTwo}
                                         />
                                     </View>
                                     <View style={styles.otpContainer}>
                                         <TextInput
+                                            ref={valueThreeRef}
                                             textAlign='center'
                                             style={styles.otpTextInput}
                                             keyboardType={'number-pad'}
-                                            maxLength={1} onChangeText={(txt) => setValueThree(txt)}
+                                            maxLength={1}
+                                            onChangeText={
+                                                (txt) => {
+                                                    setValueThree(txt);
+                                                    if (valueThree !== null) {
+                                                        valueFourRef.current.focus()
+                                                    }
+                                                }
+                                            }
                                             value={valueThree}
                                         />
                                     </View>
                                     <View style={styles.otpContainer}>
                                         <TextInput
+                                            ref={valueFourRef}
                                             textAlign='center'
                                             style={styles.otpTextInput}
                                             keyboardType={'number-pad'}
-                                            maxLength={1} onChangeText={(txt) => setValueFour(txt)}
+                                            maxLength={1}
+                                            onChangeText={
+                                                (txt) => {
+                                                    setValueFour(txt);
+                                                    if (valueFour !== null) {
+                                                        valueFiveRef.current.focus()
+                                                    }
+                                                }
+                                            }
                                             value={valueFour}
                                         />
                                     </View>
                                     <View style={styles.otpContainer}>
                                         <TextInput
+                                            ref={valueFiveRef}
                                             textAlign='center'
                                             style={styles.otpTextInput}
                                             keyboardType={'number-pad'}
-                                            maxLength={1} onChangeText={(txt) => setValueFive(txt)}
+                                            maxLength={1}
+                                            onChangeText={
+                                                (txt) => {
+                                                    setValueFive(txt);
+                                                    if (valueFive !== null) {
+                                                        valueSixRef.current.focus()
+                                                    }
+                                                }
+                                            }
                                             value={valueFive}
                                         />
                                     </View>
                                     <View style={styles.otpContainer}>
                                         <TextInput
+                                            ref={valueSixRef}
                                             textAlign='center'
                                             style={styles.otpTextInput}
                                             keyboardType={'number-pad'}
