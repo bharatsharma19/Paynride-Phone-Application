@@ -1,21 +1,7 @@
 import axios from 'axios';
 
 //const ServerURL = 'http://10.0.2.2:3001';
-const ServerURL = 'http://192.168.29.107:3001'
-
-const isValidAdmin = async () => {
-  try {
-    var response = await fetch(`${ServerURL}/admin/isValidAdmin`, {
-      headers: {authorization: sessionStorage.getItem('adminToken')},
-    });
-
-    var result = await response.json();
-
-    return result;
-  } catch (error) {
-    return null;
-  }
-};
+const ServerURL = 'http://192.168.29.107:3001';
 
 const getData = async url => {
   try {
@@ -41,4 +27,4 @@ const postData = async (url, body) => {
   }
 };
 
-export {ServerURL, postData, getData, isValidAdmin};
+export {ServerURL, postData, getData};
