@@ -21,6 +21,7 @@ const Login = ({ navigation }) => {
 
     const [inputs, setInputs] = useState({ mobileEmail: '', enteredOtp: '' })
     const [error, setError] = useState({})
+
     const validate = () => {
         var isValid = true
 
@@ -72,7 +73,7 @@ const Login = ({ navigation }) => {
                 setModalVisible(true)
             }
             else {
-                alert("Mobile Number shouls be of 10 Digits")
+                alert("Mobile Number at least contain 10 Digits")
             }
         }
         else {
@@ -83,7 +84,7 @@ const Login = ({ navigation }) => {
     const handleLoginClick = async () => {
         let tempOtp = await parseInt(enteredOtp)
 
-        console.log(enteredOtp + " === " + tempOtp)
+        console.log("Generated : " + generatedOtp + " AND Entered : " + enteredOtp)
 
         if (generatedOtp === tempOtp) {
             setModalVisible(false)
@@ -144,6 +145,7 @@ const Login = ({ navigation }) => {
                                 <View style={styles.otpMainContainer}>
                                     <View style={styles.otpContainer}>
                                         <TextInput
+                                            autoFocus={true}
                                             ref={valueOneRef}
                                             textAlign='center'
                                             style={styles.otpTextInput}

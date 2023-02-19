@@ -99,7 +99,6 @@ const SignUp = ({ navigation }) => {
                             Enter your Details
                         </Text>
                     </View>
-
                     <View>
                         <Input iconName="phone" placeholder="Mobile Number" keyboardType="numeric" error={error.mobile} onFocus={() => handleErrors(null, "mobile")} onChangeText={(txt) => handleValues(txt, 'mobile')} />
 
@@ -146,7 +145,6 @@ const SignUp = ({ navigation }) => {
 
                         <Input iconName="car-convertible" placeholder="License Number" keyboardType="default" error={error.license} onFocus={() => handleErrors(null, "license")} onChangeText={(txt) => handleValues(txt, 'license')} />
                     </View>
-
                     <View style={{ marginBottom: height * 0.096 }}>
                         <AppButton onPress={handleRegisterClick} btnWidth={0.88} borderRadius={24} buttonText={'Register'} bgColor='#2980b9' />
                     </View>

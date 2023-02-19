@@ -15,8 +15,6 @@ const Bookings = ({ navigation }) => {
     const [availableCars, setAvailableCars] = useState([])
 
     const fetchAvailableCars = async () => {
-        //console.log(bookingDetails)
-
         var body = { availabilityCity: bookingDetails.cityId }
 
         const result = await postData("user/display_all_vehicles", body)
@@ -88,7 +86,6 @@ const Bookings = ({ navigation }) => {
                             </View>
                         </View>
                     </View>
-
                     <View style={styles.renderItemImage}>
                         <View>
                             <Image style={{ resizeMode: 'contain', width: 164, height: 112, }}

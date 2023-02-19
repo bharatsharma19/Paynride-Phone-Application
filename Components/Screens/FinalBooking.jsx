@@ -52,7 +52,6 @@ const FinalBooking = () => {
                             {item.companyname} {item.modelname}
                         </Text>
                     </View>
-
                     <View style={styles.iconContainer}>
                         <View style={styles.firstIcon}>
                             <Image source={require('../Assets/petrol.png')} style={{
@@ -64,7 +63,6 @@ const FinalBooking = () => {
                                 {item.fueltype}
                             </Text>
                         </View>
-
                         <View style={{ flexDirection: 'row', gap: 5 }}>
                             <Image source={require('../Assets/automatic.png')} style={{
                                 resizeMode: 'contain',
@@ -76,7 +74,6 @@ const FinalBooking = () => {
                                 {item.transmission}
                             </Text>
                         </View>
-
                         <View style={{ flexDirection: 'row', gap: 5, alignItems: 'baseline' }}>
                             <Image source={require('../Assets/seat.png')} style={{
                                 resizeMode: 'contain',
@@ -89,7 +86,6 @@ const FinalBooking = () => {
                             </Text>
                         </View>
                     </View>
-
                     <View style={styles.carImage}>
                         <Image source={{ uri: (`${ServerURL}/images/${item.vehicleicon}`) }} style={{
                             resizeMode: 'contain',
@@ -97,9 +93,7 @@ const FinalBooking = () => {
                             width: width * (0.9),
                         }} />
                     </View>
-
                     <View style={styles.subContainer}>
-
                         <View style={{ width: width * (0.6) }}>
                             <>
                                 <View style={{ display: 'flex', justifyContent: 'space-between', }}>
@@ -139,10 +133,8 @@ const FinalBooking = () => {
                             </>
                         </View>
                     </View>
-
                     <View style={styles.lowerContainer}>
                         <View style={styles.lowerSubContainer}>
-
                             <View style={styles.textBasicContainer}>
                                 <Text style={styles.startDateEndDate}>
                                     {'City : '}
@@ -151,7 +143,6 @@ const FinalBooking = () => {
                                     {' '}{bookingDetails.cityName}
                                 </Text>
                             </View>
-
                             <View style={styles.textBasicContainer}>
                                 <Text style={styles.startDateEndDate}>
                                     {'Duration : '}
@@ -160,7 +151,6 @@ const FinalBooking = () => {
                                     {' '}{bookingDetails.days} Days {bookingDetails.hours} Hours
                                 </Text>
                             </View>
-
                             <View style={styles.textBasicContainer}>
                                 <Text style={styles.startDateEndDate}>
                                     {'Start Date : '}
@@ -169,7 +159,6 @@ const FinalBooking = () => {
                                     {' '}{bookingDetails.startDate}
                                 </Text>
                             </View>
-
                             <View style={styles.textBasicContainer}>
                                 <Text style={styles.startDateEndDate}>
                                     {'End Date : '}
@@ -180,13 +169,10 @@ const FinalBooking = () => {
                             </View>
                         </View>
                     </View>
-
                     <View style={styles.locationContainer}>
                         <Input iconName="location-enter" placeholder="Delivery Location" keyboardType="default" defaultValue={deliveryLoc} onChangeText={(txt) => setDeliveryLoc(txt)} />
                     </View>
-
                     <View style={styles.anotherLowerContainer}>
-
                         <View style={styles.priceDetails}>
                             <Text style={styles.priceDetailsText}>
                                 Base Fare
@@ -195,7 +181,6 @@ const FinalBooking = () => {
                                 &#8377; {baseFare}
                             </Text>
                         </View>
-
                         <View style={{
                             borderBottomWidth: 1,
                             borderBottomColor: '#a9a9a9',
@@ -203,7 +188,6 @@ const FinalBooking = () => {
                             width: width * (0.85),
                             height: 0
                         }} />
-
                         <View style={styles.priceDetails}>
                             <Text style={styles.priceDetailsText}>
                                 Doorstep Delivery & Pickup
@@ -212,7 +196,6 @@ const FinalBooking = () => {
                                 &#8377; {doorstepDelivery}
                             </Text>
                         </View>
-
                         <View style={{
                             borderBottomWidth: 1,
                             borderBottomColor: '#a9a9a9',
@@ -220,7 +203,6 @@ const FinalBooking = () => {
                             width: width * (0.85),
                             height: 0
                         }} />
-
                         <View style={styles.priceDetails}>
                             <Text style={styles.priceDetailsText}>
                                 Advance Payment
@@ -229,7 +211,6 @@ const FinalBooking = () => {
                                 &#8377; {advancePayment}
                             </Text>
                         </View>
-
                         <View style={{
                             borderBottomWidth: 1,
                             borderBottomColor: '#a9a9a9',
@@ -237,7 +218,6 @@ const FinalBooking = () => {
                             width: width * (0.85),
                             height: 0
                         }} />
-
                         <View style={styles.priceDetails}>
                             <Text style={styles.priceDetailsText}>
                                 Remaining Payment
@@ -246,7 +226,6 @@ const FinalBooking = () => {
                                 &#8377; {remainingAmount}
                             </Text>
                         </View>
-
                         <View style={{
                             borderBottomWidth: 1,
                             borderBottomColor: '#a9a9a9',
@@ -254,7 +233,6 @@ const FinalBooking = () => {
                             width: width * (0.85),
                             height: 0
                         }} />
-
                         <View style={styles.priceDetails}>
                             <Text style={styles.totalPriceText}>
                                 Total
@@ -263,7 +241,6 @@ const FinalBooking = () => {
                                 &#8377; {total}
                             </Text>
                         </View>
-
                         <Text style={{ marginLeft: 5, fontWeight: 900 }}>
                             Inclusive of Taxes and Insurance
                         </Text>

@@ -7,7 +7,6 @@ import { getStoreData } from '../Storage/AsyncStorage'
 const { width, height } = Dimensions.get('window')
 
 const UserProfile = () => {
-
     const [userDetails, setUserDetails] = useState({})
 
     const getDetails = async () => {

@@ -114,10 +114,10 @@ const RootNavigator = () => {
             </>
           )}
           <Text style={{fontWeight: 500, color: '#000'}}>
-            {userMobile ? userMobile : '+917000192752'}
+            {userMobile ? userMobile : 'Mobile Number'}
           </Text>
           <Text style={{fontSize: 12, fontWeight: 500, color: '#000'}}>
-            {userEmail ? userEmail : 'paynride1909@gmail.com'}
+            {userEmail ? userEmail : 'Email Address'}
           </Text>
         </View>
         <DrawerItemList {...props} />
