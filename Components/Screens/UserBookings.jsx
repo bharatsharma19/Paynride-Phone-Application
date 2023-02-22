@@ -4,7 +4,7 @@ import React from 'react'
 const UserBookings = () => {
     return (
         <View>
-            <Text>UserBookings</Text>
+            <Text>UserBookings - Temp</Text>
         </View>
     )
 }
