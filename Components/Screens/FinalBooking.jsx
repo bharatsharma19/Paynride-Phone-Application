@@ -8,13 +8,15 @@ import {
     ScrollView,
 } from "react-native";
 import { useSelector } from "react-redux";
-import { ServerURL } from "../Services/FetchNodeServices";
+import { postData, ServerURL } from "../Services/FetchNodeServices";
 import AppButton from "../UiComponents/Common/Button";
 import Input from "../UiComponents/Common/Input";
+import RazorpayCheckout from 'react-native-razorpay';
+import { getStoreData } from "../Storage/AsyncStorage";
 
 const { width, height } = Dimensions.get('window');
 
-const FinalBooking = () => {
+const FinalBooking = ({ navigation }) => {
 
     var vehicle = useSelector(state => state.vehicle)
     var item = Object.values(vehicle)[0]
@@ -36,9 +38,67 @@ const FinalBooking = () => {
     var advancePayment = parseInt((3 / 4) * total);
     let remainingAmount = parseInt(total - advancePayment)
 
-    const handleProceedClick = () => {
-        console.warn("Proceed Button Clicked")
+    const [userDetails, setUserDetails] = useState({})
+
+    const getDetails = async () => {
+        var user = await getStoreData('UserData');
+        setUserDetails(user[0])
     }
+    useEffect(function () {
+        getDetails()
+    }, [])
+
+    var options = {
+        description: 'Car booking Advance Payment',
+        image: 'http://localhost:3001/images/transparent_logo.png',
+        currency: 'INR',
+        key: "rzp_test_GQ6XaPC6gMPNwH", // Your api key
+        amount: advancePayment * 100,
+        name: userDetails.fullname,
+        prefill: {
+            email: userDetails.emailid,
+            contact: userDetails.mobileno,
+            name: 'PaynRent'
+        },
+        theme: {
+            color: 'blue'
+        }
+    }
+
+    const handlePayment = () => {
+        RazorpayCheckout.open(options).then((data) => {
+            // handle success
+            handleSubmit(data)
+        }).catch((error) => {
+            // handle failure
+            alert(`Error: ${error.code} | ${error.description}`);
+        });
+    }
+
+    const handleSubmit = async (data) => {
+        var body = {
+            vehicleid: item.vehicleid,
+            useremailid: userDetails.emailid,
+            usermobileno: userDetails.mobileno,
+            bookingstarttime: bookingDetails.startDate,
+            bookingendtime: bookingDetails.endDate,
+            bookingcity: bookingDetails.cityName,
+            bookingtotalamount: total,
+            advancepayment: advancePayment,
+            deliverylocation: deliveryLoc,
+            paymentid: data.razorpay_payment_id,
+        };
+
+        var response = await postData("booking/bookingdetailssubmitted", body);
+
+        if (response) {
+            alert('Success')
+            navigation.navigate("Home")
+        }
+        else {
+            alert('Server Error, Please Restart Application')
+        }
+    };
 
     return (
         <>
@@ -246,7 +306,7 @@ const FinalBooking = () => {
                         </Text>
                     </View>
                     <View style={styles.proceedBtn}>
-                        <AppButton onPress={handleProceedClick} btnWidth={0.82} buttonText={'Proceed'} bgColor='#2980b9' borderRadius={24} />
+                        <AppButton onPress={() => handlePayment()} btnWidth={0.82} buttonText={'Proceed'} bgColor='#2980b9' borderRadius={24} />
                     </View>
                 </View >
             </ScrollView>
