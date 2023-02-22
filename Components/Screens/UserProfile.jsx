@@ -2,122 +2,141 @@
 
 import { Dimensions, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { getStoreData } from '../Storage/AsyncStorage'
+import { getStoreData, storeData } from '../Storage/AsyncStorage'
+import { postData } from '../Services/FetchNodeServices'
 
 const { width, height } = Dimensions.get('window')
 
 const UserProfile = () => {
     const [userDetails, setUserDetails] = useState({})
+    const [fetchStatus, setFetchStatus] = useState(false)
 
     const getDetails = async () => {
         var user = await getStoreData('UserData');
         setUserDetails(user[0])
+
+        setFetchStatus(true)
     }
     useEffect(function () {
         getDetails()
     }, [])
 
+    const fetchLatestData = async () => {
+        if (fetchStatus) {
+            var result = await postData('user/checkuser', { mobileno: userDetails.mobileno })
+
+            storeData('UserData', result.data)
+
+            setFetchStatus(false)
+        }
+    }
+    useEffect(function () {
+        fetchLatestData()
+    }, [])
+
     return (
-        <View style={styles.mainContainer}>
-            <View style={styles.subContainer}>
-                <View style={styles.detailsBox}>
-                    <View>
-                        <Text style={styles.headingTextStyle}>
-                            Name
-                        </Text>
+        <>
+            <View style={styles.mainContainer}>
+                <View style={styles.subContainer}>
+                    <View style={styles.detailsBox}>
+                        <View>
+                            <Text style={styles.headingTextStyle}>
+                                Name
+                            </Text>
+                        </View>
+                        <View style={styles.detailsText}>
+                            <Text style={styles.textStyle}>
+                                {userDetails.fullname}
+                            </Text>
+                        </View>
                     </View>
-                    <View style={styles.detailsText}>
-                        <Text style={styles.textStyle}>
-                            {userDetails.fullname}
-                        </Text>
+                    <View style={styles.detailsBox}>
+                        <View>
+                            <Text style={styles.headingTextStyle}>
+                                Mobile
+                            </Text>
+                        </View>
+                        <View style={styles.detailsText}>
+                            <Text style={styles.textStyle}>
+                                +91{userDetails.mobileno}
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={styles.detailsBox}>
+                        <View>
+                            <Text style={styles.headingTextStyle}>
+                                Aadhar
+                            </Text>
+                        </View>
+                        <View style={styles.detailsText}>
+                            <Text style={styles.textStyle}>
+                                {userDetails.aadharno}
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={styles.detailsBox}>
+                        <View>
+                            <Text style={styles.headingTextStyle}>
+                                License
+                            </Text>
+                        </View>
+                        <View style={styles.detailsText}>
+                            <Text style={styles.textStyle}>
+                                {userDetails.licenseno}
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={styles.detailsBox}>
+                        <View>
+                            <Text style={styles.headingTextStyle}>
+                                Email
+                            </Text>
+                        </View>
+                        <View style={{
+                            width: "82%",
+                            height: "34%",
+                            backgroundColor: "#fff",
+                            color: "#000",
+                            borderRadius: 12,
+                            borderColor: "#3498db",
+                            borderWidth: 0.5,
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            margin: 0,
+                        }}>
+                            <Text style={styles.textStyle}>
+                                {userDetails.emailid}
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={styles.detailsBox}>
+                        <View>
+                            <Text style={styles.headingTextStyle}>
+                                Total Bookings
+                            </Text>
+                        </View>
+                        <View style={{
+                            width: "48%",
+                            height: "34%",
+                            backgroundColor: "#fff",
+                            color: "#000",
+                            borderRadius: 12,
+                            borderColor: "#3498db",
+                            borderWidth: 0.5,
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            margin: 0,
+                        }}>
+                            <Text style={styles.textStyle}>
+                                {userDetails.totalbookings}
+                            </Text>
+                        </View>
                     </View>
                 </View>
-                <View style={styles.detailsBox}>
-                    <View>
-                        <Text style={styles.headingTextStyle}>
-                            Mobile
-                        </Text>
-                    </View>
-                    <View style={styles.detailsText}>
-                        <Text style={styles.textStyle}>
-                            +91{userDetails.mobileno}
-                        </Text>
-                    </View>
-                </View>
-                <View style={styles.detailsBox}>
-                    <View>
-                        <Text style={styles.headingTextStyle}>
-                            Aadhar
-                        </Text>
-                    </View>
-                    <View style={styles.detailsText}>
-                        <Text style={styles.textStyle}>
-                            {userDetails.aadharno}
-                        </Text>
-                    </View>
-                </View>
-                <View style={styles.detailsBox}>
-                    <View>
-                        <Text style={styles.headingTextStyle}>
-                            License
-                        </Text>
-                    </View>
-                    <View style={styles.detailsText}>
-                        <Text style={styles.textStyle}>
-                            {userDetails.licenseno}
-                        </Text>
-                    </View>
-                </View>
-                <View style={styles.detailsBox}>
-                    <View>
-                        <Text style={styles.headingTextStyle}>
-                            Email
-                        </Text>
-                    </View>
-                    <View style={{
-                        width: "82%",
-                        height: "34%",
-                        backgroundColor: "#fff",
-                        color: "#000",
-                        borderRadius: 12,
-                        borderColor: "#3498db",
-                        borderWidth: 0.5,
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        margin: 0,
-                    }}>
-                        <Text style={styles.textStyle}>
-                            {userDetails.emailid}
-                        </Text>
-                    </View>
-                </View>
-                <View style={styles.detailsBox}>
-                    <View>
-                        <Text style={styles.headingTextStyle}>
-                            Total Bookings
-                        </Text>
-                    </View>
-                    <View style={{
-                        width: "48%",
-                        height: "34%",
-                        backgroundColor: "#fff",
-                        color: "#000",
-                        borderRadius: 12,
-                        borderColor: "#3498db",
-                        borderWidth: 0.5,
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        margin: 0,
-                    }}>
-                        <Text style={styles.textStyle}>
-                            {userDetails.totalbookings}
-                        </Text>
-                    </View>
-                </View>
-            </View>
-        </View >
+            </View >
+        </>
     )
 }
 

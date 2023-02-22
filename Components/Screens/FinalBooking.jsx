@@ -58,7 +58,7 @@ const FinalBooking = ({ navigation }) => {
         prefill: {
             email: userDetails.emailid,
             contact: userDetails.mobileno,
-            name: 'PaynRent'
+            name: 'PaynRide'
         },
         theme: {
             color: 'blue'
