@@ -19,7 +19,7 @@ export default function AppHeader() {
                 <MCI name="menu" size={24} onPress={() => navigation.dispatch(DrawerActions.openDrawer())} style={{ color: "#000", marginLeft: 8, }} />
                 <Image style={{ resizeMode: 'contain', width: 72, height: 120 }}
                     source={require('../../Assets/classic.png')} />
-                <MCI name="account" size={24} style={{ color: "#000", marginRight: 8, }} />
+                <MCI name="account" size={24} onPress={() => navigation.navigate("My Profile")} style={{ color: "#000", marginRight: 8, }} />
             </View>
         </View>
     )

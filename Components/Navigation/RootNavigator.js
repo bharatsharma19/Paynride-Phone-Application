@@ -19,7 +19,7 @@ import {
   Dimensions,
 } from 'react-native';
 import AppHeader from '../UiComponents/Common/AppHeader';
-import {getStoreData} from '../Storage/AsyncStorage';
+import {getStoreData, removeStoreData} from '../Storage/AsyncStorage';
 import UserProfile from '../Screens/UserProfile';
 import Bookings from '../Screens/Bookings';
 import SignUp from '../Screens/SignUp';
@@ -51,6 +51,11 @@ const RootNavigator = () => {
   useEffect(() => {
     checkAuth();
   }, []);
+
+  const handleLogout = props => {
+    removeStoreData('UserData');
+    props.navigation.navigate('Login');
+  };
 
   const ProjectDrawer = () => {
     return (
@@ -128,6 +133,7 @@ const RootNavigator = () => {
         <DrawerItem
           label="Logout"
           icon={() => <Icon name="logout" size={20} color={'#000'} />}
+          onPress={() => handleLogout(props)}
         />
       </DrawerContentScrollView>
     );
