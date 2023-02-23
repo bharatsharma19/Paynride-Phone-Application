@@ -100,11 +100,11 @@ const SignUp = ({ navigation }) => {
                         </Text>
                     </View>
                     <View>
-                        <Input iconName="phone" placeholder="Mobile Number" keyboardType="numeric" error={error.mobile} onFocus={() => handleErrors(null, "mobile")} onChangeText={(txt) => handleValues(txt, 'mobile')} />
+                        <Input iconName="phone" placeholder="Mobile Number" defaultValue={inputs.mobile} keyboardType="numeric" error={error.mobile} onFocus={() => handleErrors(null, "mobile")} onChangeText={(txt) => handleValues(txt, 'mobile')} />
 
-                        <Input iconName="email" placeholder="Email" keyboardType="email-address" error={error.email} onFocus={() => handleErrors(null, "email")} onChangeText={(txt) => handleValues(txt, 'email')} />
+                        <Input iconName="email" placeholder="Email" defaultValue={inputs.email} keyboardType="email-address" error={error.email} onFocus={() => handleErrors(null, "email")} onChangeText={(txt) => handleValues(txt, 'email')} />
 
-                        <Input iconName="account" placeholder="Name" keyboardType="default" error={error.name} onFocus={() => handleErrors(null, "name")} onChangeText={(txt) => handleValues(txt, 'name')} />
+                        <Input iconName="account" placeholder="Name" defaultValue={inputs.name} keyboardType="default" error={error.name} onFocus={() => handleErrors(null, "name")} onChangeText={(txt) => handleValues(txt, 'name')} />
 
                         <TouchableOpacity onPress={showDobPicker}>
                             <View style={{
@@ -141,9 +141,9 @@ const SignUp = ({ navigation }) => {
                             </View>
                         </TouchableOpacity>
 
-                        <Input iconName="card-account-details-outline" placeholder="Aadhar Number" keyboardType="numeric" error={error.aadhar} onFocus={() => handleErrors(null, "aadhar")} onChangeText={(txt) => handleValues(txt, 'aadhar')} />
+                        <Input iconName="card-account-details-outline" placeholder="Aadhar Number" defaultValue={inputs.aadhar} keyboardType="numeric" error={error.aadhar} onFocus={() => handleErrors(null, "aadhar")} onChangeText={(txt) => handleValues(txt, 'aadhar')} />
 
-                        <Input iconName="car-convertible" placeholder="License Number" keyboardType="default" error={error.license} onFocus={() => handleErrors(null, "license")} onChangeText={(txt) => handleValues(txt, 'license')} />
+                        <Input iconName="car-convertible" placeholder="License Number" defaultValue={inputs.license} keyboardType="default" error={error.license} onFocus={() => handleErrors(null, "license")} onChangeText={(txt) => handleValues(txt, 'license')} />
                     </View>
                     <View style={{ marginBottom: height * 0.096 }}>
                         <AppButton onPress={handleRegisterClick} btnWidth={0.88} borderRadius={24} buttonText={'Register'} bgColor='#2980b9' />
