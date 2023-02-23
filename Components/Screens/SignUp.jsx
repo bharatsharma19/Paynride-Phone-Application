@@ -48,7 +48,7 @@ const SignUp = ({ navigation }) => {
         if (validate()) {
             var body = { mobileno: inputs.mobile, emailid: inputs.email, fullname: inputs.name, dob: dob, aadharno: inputs.aadhar, licenseno: inputs.license }
 
-            var response = await postData("user/userdetailssubmitted", body);
+            var response = await postData("reactnative/userdetailssubmitted", body);
 
             if (response.status) {
                 Alert.alert('Success', 'Registered Successfully...', [

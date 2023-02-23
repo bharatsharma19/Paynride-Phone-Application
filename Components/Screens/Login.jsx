@@ -58,7 +58,7 @@ const Login = ({ navigation }) => {
     }
 
     const checkUser = async (mobileNumber) => {
-        var response = await postData("user/checkuser", { mobileno: mobileNumber });
+        var response = await postData("reactnative/checkuser", { mobileno: mobileNumber });
         setUserDetails(response)
     }
 
@@ -90,7 +90,7 @@ const Login = ({ navigation }) => {
             setModalVisible(false)
 
             if (userDetails.status) {
-                var result = await postData('user/checkuser', { mobileno: inputs.mobileEmail })
+                var result = await postData('reactnative/checkuser', { mobileno: inputs.mobileEmail })
 
                 if (result.status) {
                     storeData('UserData', result.data)

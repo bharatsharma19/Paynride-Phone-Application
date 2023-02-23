@@ -17,7 +17,7 @@ const Bookings = ({ navigation }) => {
     const fetchAvailableCars = async () => {
         var body = { availabilityCity: bookingDetails.cityId }
 
-        const result = await postData("user/display_all_vehicles", body)
+        const result = await postData("reactnative/display_all_vehicles", body)
 
         setAvailableCars(result.data)
     }

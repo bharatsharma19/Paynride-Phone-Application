@@ -89,7 +89,7 @@ const FinalBooking = ({ navigation }) => {
             paymentid: data.razorpay_payment_id,
         };
 
-        var response = await postData("booking/bookingdetailssubmitted", body);
+        var response = await postData("reactnative/bookingdetailssubmitted", body);
 
         if (response) {
             alert('Success')

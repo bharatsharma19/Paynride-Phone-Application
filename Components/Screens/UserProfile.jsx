@@ -13,6 +13,7 @@ const UserProfile = () => {
 
     const getDetails = async () => {
         var user = await getStoreData('UserData');
+
         setUserDetails(user[0])
 
         setFetchStatus(true)
@@ -23,7 +24,7 @@ const UserProfile = () => {
 
     const fetchLatestData = async () => {
         if (fetchStatus) {
-            var result = await postData('user/checkuser', { mobileno: userDetails.mobileno })
+            var result = await postData('reactnative/checkuser', { mobileno: userDetails.mobileno })
 
             storeData('UserData', result.data)
 
@@ -32,7 +33,7 @@ const UserProfile = () => {
     }
     useEffect(function () {
         fetchLatestData()
-    }, [])
+    }, [userDetails.totalbookings])
 
     return (
         <>

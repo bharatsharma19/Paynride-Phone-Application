@@ -27,7 +27,7 @@ const Search = ({ navigation }) => {
     var minDate = new Date()
 
     const fetchAllCities = async () => {
-        var response = await getData("user/display_all_cities")
+        var response = await getData("reactnative/display_all_cities")
         setCities(response.data)
     }
     useEffect(() => {
