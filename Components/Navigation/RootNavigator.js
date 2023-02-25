@@ -60,7 +60,15 @@ const RootNavigator = () => {
   const ProjectDrawer = () => {
     return (
       <Drawer.Navigator
-        drawerContent={props => <CustomDrawerContent {...props} />}>
+        drawerContent={props => <CustomDrawerContent {...props} />}
+        screenOptions={{
+          drawerPosition: 'left',
+          drawerType: 'front',
+          swipeEnabled: true,
+          gestureEnabled: true,
+          swipeEdgeWidth: 100,
+          overlayColor: '#00000090',
+        }}>
         <Drawer.Screen
           name="PaynRide"
           component={HomePage}
@@ -168,17 +176,35 @@ const RootNavigator = () => {
             }}
           />
           <Stack.Screen
-            name="AvailableCars"
+            name="Available Vehicles"
             component={Bookings}
             options={{
               headerShown: AppHeader,
+              headerStyle: {
+                backgroundColor: '#0080ff',
+              },
+              headerTitleAlign: 'center',
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontSize: 24,
+                fontWeight: 'bold',
+              },
             }}
           />
           <Stack.Screen
-            name="FinalBooking"
+            name="Booking Summary"
             component={FinalBooking}
             options={{
               headerShown: AppHeader,
+              headerStyle: {
+                backgroundColor: '#0080ff',
+              },
+              headerTitleAlign: 'center',
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontSize: 24,
+                fontWeight: 'bold',
+              },
             }}
           />
         </Stack.Navigator>

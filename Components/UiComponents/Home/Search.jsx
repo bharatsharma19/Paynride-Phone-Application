@@ -156,7 +156,7 @@ const Search = ({ navigation }) => {
     const handleCitySearch = () => {
         dispatch({ type: "ADD_BOOKING", payload: { cityId: cityId, cityName: selectedCity, startDate: startDate, endDate: endDate, duration: daysTime, days: days, hours: hours } })
 
-        navigation.navigate("AvailableCars")
+        navigation.navigate("Available Vehicles")
     }
 
     return (

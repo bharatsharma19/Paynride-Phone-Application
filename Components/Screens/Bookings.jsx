@@ -33,7 +33,7 @@ const Bookings = ({ navigation }) => {
 
             dispatch({ type: "ADD_VEHICLE", payload: [selectedItem.vehicleid, selectedItem] })
 
-            navigation.navigate("FinalBooking")
+            navigation.navigate("Booking Summary")
         }
 
         return (

@@ -104,9 +104,6 @@ const FinalBooking = ({ navigation }) => {
         <>
             <ScrollView>
                 <View style={styles.mainContainer}>
-                    <Text style={styles.mainStyleText}>
-                        Booking Summary
-                    </Text>
                     <View style={{ marginTop: 10 }}>
                         <Text style={styles.companyText}>
                             {item.companyname} {item.modelname}
@@ -334,7 +331,8 @@ const styles = StyleSheet.create({
     iconContainer: {
         width: '100%',
         flexDirection: 'row',
-        marginTop: 10,
+        marginTop: 12,
+        marginBottom: 6,
         alignItems: 'center',
         justifyContent: 'space-evenly',
     },
@@ -454,13 +452,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: height * 0.01,
         marginBottom: height * 0.06,
-    },
-
-    mainStyleText: {
-        fontSize: 20,
-        color: '#000',
-        fontWeight: 700,
-        marginTop: 8,
     },
 
     startDateEndDate: {
