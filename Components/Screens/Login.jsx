@@ -55,6 +55,12 @@ const Login = ({ navigation }) => {
         setValueSix(txt)
 
         setEnteredOtp(parseInt(valueOne + valueTwo + valueThree + valueFour + valueFive + txt))
+
+        //console.log(txt)
+
+        if (txt === "") {
+            valueFiveRef.current.focus()
+        }
     }
 
     const checkUser = async (mobileNumber) => {
@@ -108,6 +114,14 @@ const Login = ({ navigation }) => {
             }
         }
         else {
+            valueOneRef.current.focus()
+            setValueOne("");
+            setValueTwo("");
+            setValueThree("");
+            setValueFour("");
+            setValueFive("");
+            setValueSix("");
+
             alert("Invalid Otp!")
         }
     }
@@ -157,6 +171,9 @@ const Login = ({ navigation }) => {
                                                     if (valueOne !== null) {
                                                         valueTwoRef.current.focus()
                                                     }
+                                                    if (txt === "") {
+                                                        valueOneRef.current.focus()
+                                                    }
                                                 }
                                             }
                                             value={valueOne}
@@ -174,6 +191,9 @@ const Login = ({ navigation }) => {
                                                     setValueTwo(txt);
                                                     if (valueTwo !== null) {
                                                         valueThreeRef.current.focus()
+                                                    }
+                                                    if (txt === "") {
+                                                        valueOneRef.current.focus()
                                                     }
                                                 }
                                             }
@@ -193,6 +213,9 @@ const Login = ({ navigation }) => {
                                                     if (valueThree !== null) {
                                                         valueFourRef.current.focus()
                                                     }
+                                                    if (txt === "") {
+                                                        valueTwoRef.current.focus()
+                                                    }
                                                 }
                                             }
                                             value={valueThree}
@@ -211,6 +234,9 @@ const Login = ({ navigation }) => {
                                                     if (valueFour !== null) {
                                                         valueFiveRef.current.focus()
                                                     }
+                                                    if (txt === "") {
+                                                        valueThreeRef.current.focus()
+                                                    }
                                                 }
                                             }
                                             value={valueFour}
@@ -228,6 +254,9 @@ const Login = ({ navigation }) => {
                                                     setValueFive(txt);
                                                     if (valueFive !== null) {
                                                         valueSixRef.current.focus()
+                                                    }
+                                                    if (txt === "") {
+                                                        valueFourRef.current.focus()
                                                     }
                                                 }
                                             }
